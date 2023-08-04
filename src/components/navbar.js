@@ -1,8 +1,11 @@
 import React from "react";
 import "./navbar.css";
 import { Link } from "react-router-dom";
+import { UseAuthContext } from "../hooks/useAuthContext";
 
 const Navbar = () => {
+  const { user } = UseAuthContext();
+
   return (
     <React.Fragment>
       <nav className="navbar">
@@ -23,7 +26,12 @@ const Navbar = () => {
         </div>
         <div className="btns">
           <button className="btn btn-light ms-3">
-            <Link to="login">Login</Link>
+            {!user && <Link to="/login">Login</Link>}
+            {user && (
+              <Link to="/user">
+                <img src={user.pic} alt={user.Name} className="profil_img" />
+              </Link>
+            )}
           </button>
         </div>
         <div className="bar">
@@ -105,9 +113,12 @@ const Navbar = () => {
               </div>
               <div className="btns1">
                 <button className="btn btn-light ms-3">
-                  <Link to="/login">
-                    <i class="fa-solid fa-lock"></i>Login
-                  </Link>
+                  {!user && (
+                    <Link to="/login">
+                      <i class="fa-solid fa-lock"></i>Login
+                    </Link>
+                  )}
+                  {user && <Link to="/user">Profile</Link>}
                 </button>
               </div>
               <div className="btns1">
@@ -124,7 +135,9 @@ const Navbar = () => {
               <hr />
               <ul className="pop_list">
                 <li>
-                  <i className="fa-solid fa-house" href="/"></i>Home
+                  <Link to="/">
+                    <i className="fa-solid fa-house"></i>Home{" "}
+                  </Link>
                 </li>
                 <li>
                   <Link to="/catagory">
@@ -138,11 +151,8 @@ const Navbar = () => {
                 </li>
                 <li>
                   <Link to="/catagory">
-                    <i className="fa-solid fa-book"></i>Mega Menu
+                    <i className="fa-solid fa-book"></i>Catagory
                   </Link>
-                </li>
-                <li>
-                  <i className="fa-solid fa-paperclip" href="/"></i>Pages
                 </li>
                 <li>
                   <Link to="/user">
@@ -166,7 +176,9 @@ const Navbar = () => {
       </nav>
       <div className="snav">
         <ul>
-          <li href="/">Home</li>
+          <li>
+            <Link to="/"> Home</Link>
+          </li>
           <li>
             <Link to="/catagory"> Category</Link>
           </li>
@@ -174,7 +186,7 @@ const Navbar = () => {
             <Link to="/about"> About</Link>
           </li>
           <li>
-            <Link to="service"> Service</Link>
+            <Link to="/service"> Service</Link>
           </li>
         </ul>
         <button>

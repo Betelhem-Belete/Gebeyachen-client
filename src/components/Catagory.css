@@ -2,12 +2,14 @@
   margin-bottom: 3rem;
   color: #ff5a00;
 }
-.cats {
+.cats a:hover {
+  color: #ff5a00;
   cursor: pointer;
 }
-
 .card_cat {
-  border: solid 1px #ff5a00;
+  position: relative;
+  box-sizing: border-box;
+  border: solid 1px #ff59004b;
   border-radius: 8px;
   display: flex;
   align-items: center;
@@ -22,9 +24,18 @@
   display: flex;
   flex-direction: column;
 }
-.discription h4 {
+.discription h {
   padding-bottom: 0.5rem;
 }
 .discription p {
   font-size: 12px;
+}
+.card_cat .cat_imgs {
+  width: 100px;
+  border-radius: 7px;
+  margin-right: 10px;
+}
+.catagorys .spinner-border {
+  margin: 2rem 50%;
+  font-size: 30px;
 }
