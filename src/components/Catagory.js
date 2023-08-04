@@ -1,42 +1,45 @@
 import React from "react";
 import "./Catagory.css";
+import Usefetch from "../hooks/useGet";
+import { Link } from "react-router-dom";
 
-function Catagory() {
+const Catagory = () => {
+  const api = "http://localhost:8000/ip/cat/allcat";
+  const { data } = Usefetch(api);
+  const catagory = data.cats;
+
   return (
     <div>
       <div className="container catagorys">
         <h2>Categories</h2>
-        <div className="cats">
-          {/* catagores cards */}
-          <div class="card_cat">
-            <img src=".." alt="cat" />
-            <div className="discription">
-              <h4>Electronics</h4>
-              <p>discription of the item will be hear on this plase</p>
-            </div>
+        {catagory && (
+          <div className="cats">
+            {catagory.map((cats) => (
+              <Link to="/catagory">
+                <div class="card">
+                  <img
+                    src={cats.cat_pic}
+                    class="card-img-top"
+                    alt={cats.Catagory_Name}
+                    className="cat_imgs"
+                  />
+                  <div class="card-body">
+                    <h5>{cats.catagory_Name}</h5>
+                    <p class="card-text">{cats.cat_description}</p>
+                  </div>
+                </div>
+              </Link>
+            ))}
           </div>
-          {/* card end hear */}
-          {/* catagores cards */}
-          <div class="card_cat">
-            <img src=".." alt="cat" />
-            <div className="discription">
-              <h4>Electronics</h4>
-              <p>discription of the item will be hear on this plase</p>
-            </div>
+        )}
+        {!catagory && (
+          <div className="spinner-border text-warning" role="status">
+            <span className="visually-hidden">Loading...</span>
           </div>
-          {/* card end hear */}
-        </div>
+        )}
       </div>
     </div>
   );
-}
+};
 
 export default Catagory;
-//  <img src="..." class="card-img-top" alt="..." />
-//             <div class="card-body">
-//               <h5 class="card-title">Card title</h5>
-//               <p class="card-text">
-//                 Some quick example text to build on the card title and make up
-//                 the bulk of the card's content.
-//               </p>
-//             </div>

@@ -1,9 +1,13 @@
 import React from "react";
-
+import Footer from "../components/footer";
+import Navbar from "../components/navbar";
+import "./styles.css";
 function About() {
   return (
     <div>
-      <p>about</p>
+      <Navbar />
+      <div className="content">about</div>
+      <Footer />
     </div>
   );
 }

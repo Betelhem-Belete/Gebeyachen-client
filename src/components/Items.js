@@ -1,65 +1,40 @@
 import React from "react";
 import "./Items.css";
+import Usefetch from "../hooks/useGet";
+import { Link } from "react-router-dom";
 
 function Items() {
+  const api = "http://localhost:8000/ip/item/allitems";
+  const { data } = Usefetch(api);
+  const all_items = data.all_Items;
+  console.log("items", all_items);
   return (
     <div className="items">
       {/* card starts */}
-      <div class="card">
-        <img src="..." class="card-img-top" alt="..." />
-        <div class="card-body">
-          <h5 class="card-title">Card title</h5>
-          <p class="card-text">
-            Some quick example text to build on the card title and make up the
-            bulk of the card's content.
-          </p>
-          <a href="/" class="btn btn-primary">
-            Go somewhere
-          </a>
+      {all_items &&
+        all_items.map((items) => (
+          <Link to="/" className="links">
+            <div class="card">
+              <img
+                src={items.Item_Images}
+                class="card-img-top"
+                alt={items.Item_Description}
+              />
+              <div class="card-body">
+                <h6 class="card-title">{items.Item_Name}</h6>
+                <a href="/" class="snav1">
+                  <button>Add +</button>
+                  <p>{items.Item_Price}$</p>
+                </a>
+              </div>
+            </div>
+          </Link>
+        ))}
+      {!all_items && (
+        <div className="spinner-border text-warning" role="status">
+          <span className="visually-hidden">Loading...</span>
         </div>
-      </div>
-      {/* card ends  */}
-      {/* card starts */}
-      <a href="/">
-        <div class="card">
-          <img src="..." class="card-img-top" alt="..." />
-          <div class="card-body">
-            <h5 class="card-title">Card title</h5>
-            <p class="card-text">Some quick example text to</p>
-            <a href="/" class="snav1">
-              <button>pay</button>
-            </a>
-          </div>
-        </div>
-      </a>
-      {/* card ends  */} {/* card starts */}
-      <div class="card">
-        <img src="..." class="card-img-top" alt="..." />
-        <div class="card-body">
-          <h5 class="card-title">Card title</h5>
-          <p class="card-text">
-            Some quick example text to build on the card title and make up the
-            bulk of the card's content.
-          </p>
-          <a href="/" class="btn btn-primary">
-            Go somewhere
-          </a>
-        </div>
-      </div>
-      {/* card ends  */} {/* card starts */}
-      <div class="card">
-        <img src="..." class="card-img-top" alt="..." />
-        <div class="card-body">
-          <h5 class="card-title">Card title</h5>
-          <p class="card-text">
-            Some quick example text to build on the card title and make up the
-            bulk of the card's content.
-          </p>
-          <a href="/" class="btn btn-primary">
-            Go somewhere
-          </a>
-        </div>
-      </div>
+      )}
       {/* card ends  */}
     </div>
   );

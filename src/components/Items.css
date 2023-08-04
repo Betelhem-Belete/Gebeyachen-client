@@ -2,6 +2,13 @@
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
+  border-radius: 7px;
+}
+.items .links:hover {
+  color: black;
+  border-radius: 7px;
+  box-shadow: 3px 3px 7px rgb(196, 193, 193);
+  transition: 0.3s;
 }
 .card {
   margin: 0.4rem;
@@ -12,8 +19,25 @@
   font-weight: 400;
   color: white;
   background-color: #ff5a00;
-  border-radius: 6px;
-  padding: 0.5rem 1rem;
+  border-radius: 7px;
+  padding: 0.2rem 0.6rem;
+}
+.snav1 button:hover {
+  transition: 0.4s;
+  background-color: #86421c;
+}
+.items .card-body .snav1 {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.items .card-body .snav1 p {
+  margin-left: 1rem;
+  font-size: 14px;
+  color: gray;
+}
+.items .card-body .snav1 p:hover {
+  color: black;
 }
 @media (max-width: 421px) {
   .items {

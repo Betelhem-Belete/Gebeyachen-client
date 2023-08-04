@@ -6,7 +6,9 @@
   background-color: #ff5a00;
   padding: 0;
 }
-
+.btns .profil_img {
+  width: 15px;
+}
 .navbar .navbar-brand {
   color: white;
   font-size: 1.5rem;
@@ -142,6 +144,9 @@ h3 .navbar-brand1 {
 
   background-color: #ff5a00;
   transition: 0.2s;
+}
+.pop_list li a {
+  display: block;
 }
 .pop_list li a:hover {
   color: white;
