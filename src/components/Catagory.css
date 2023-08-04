@@ -1,0 +1,30 @@
+.catagorys h2 {
+  margin-bottom: 3rem;
+  color: #ff5a00;
+}
+.cats {
+  cursor: pointer;
+}
+
+.card_cat {
+  border: solid 1px #ff5a00;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+.card_cat:hover {
+  color: white;
+  background-color: #ff5a00;
+  transition: 0.4s;
+}
+.card_cat .discription {
+  display: flex;
+  flex-direction: column;
+}
+.discription h4 {
+  padding-bottom: 0.5rem;
+}
+.discription p {
+  font-size: 12px;
+}

@@ -1,14 +1,17 @@
 @import url("https://fonts.googleapis.com/css2?family=Borel&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Bitter:ital@1&display=swap");
 .navbar {
-  background-color: #f57c51;
+  /* position: sticky;
+  top: 0; */
+  background-color: #ff5a00;
   padding: 0;
 }
+
 .navbar .navbar-brand {
   color: white;
   font-size: 1.5rem;
   font-weight: bold;
-  margin: 0 1.9rem;
+  margin: 0 1rem;
   font-family: "Borel", cursive;
 }
 form {
@@ -32,20 +35,21 @@ form {
   padding-right: 1rem;
 }
 button #savechng {
-  background-color: #f57c51;
+  background-color: #ff5a00;
   color: white;
 }
 .search1 {
   position: relative;
   display: block;
 }
+
 .search1 .fa-magnifying-glass {
   position: absolute;
   top: -8;
   right: 5;
 }
 .search1 input {
-  border: solid 1px #f57c51;
+  border: solid 1px #ff5a00;
   width: 90% !important;
 }
 .btns1 {
@@ -54,21 +58,22 @@ button #savechng {
 .btns1 button {
   font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
   color: white;
-  background-color: #f57c51;
+  background-color: #ff5a00;
   border-radius: 6px;
   width: 91%;
   margin-top: 1rem;
   padding: 0.5rem 2rem;
   font-size: 20px;
 }
+
 .btns1 button:hover {
-  background-color: #b63607;
+  background-color: #f57c51;
   color: white;
   transition: 0.4s;
 }
 h3 .navbar-brand1 {
   font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
-  color: #f57c51;
+  color: #ff5a00;
   font-weight: 600;
   text-decoration: none;
 }
@@ -96,24 +101,29 @@ h3 .navbar-brand1 {
 .snav ul li:hover {
   color: #f57c51;
 }
+.snav ul li a:hover {
+  color: #f57c51;
+}
 .snav button {
   font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
   font-weight: 700;
   color: white;
-  background-color: #f57c51;
+  background-color: #ff5a00;
   border-radius: 6px;
   margin: 9px 1rem 9px 0;
   padding: 0.5rem 1rem;
 }
 .snav button:hover {
-  background-color: #b63607;
+  background-color: #f57c51;
+}
+.snav button a:hover {
+  color: white;
 }
 .fa-location-dot {
   margin-right: 10px;
 }
 .pop_list {
   list-style: none;
-  margin-left: -1rem;
   margin-right: 1rem;
 }
 .pop_list li {
@@ -129,10 +139,13 @@ h3 .navbar-brand1 {
 }
 .pop_list li:hover {
   color: white;
-  background-color: #f57c51;
+
+  background-color: #ff5a00;
   transition: 0.2s;
 }
-
+.pop_list li a:hover {
+  color: white;
+}
 .pop_list li .fa-solid {
   margin-right: 2rem;
 }
