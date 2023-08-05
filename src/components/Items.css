@@ -10,19 +10,19 @@
   box-shadow: 3px 3px 7px rgb(196, 193, 193);
   transition: 0.3s;
 }
-.card {
+.items .card {
   margin: 0.4rem;
   max-width: 12rem;
   border: solid 1px #e9c9b8;
 }
-.snav1 button {
+.items .snav1 button {
   font-weight: 400;
   color: white;
   background-color: #ff5a00;
   border-radius: 7px;
   padding: 0.2rem 0.6rem;
 }
-.snav1 button:hover {
+.items .snav1 button:hover {
   transition: 0.4s;
   background-color: #86421c;
 }

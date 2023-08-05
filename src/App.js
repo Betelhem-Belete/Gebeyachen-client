@@ -7,6 +7,8 @@ import Servic from "./pages/Servic";
 import About from "./pages/About";
 import Catdetails from "./pages/Catdetails";
 import User from "./pages/User";
+import AddItem from "./pages/AddItem";
+
 import Signup from "./pages/Signup";
 import { UseAuthContext } from "./hooks/useAuthContext";
 
@@ -24,6 +26,7 @@ function App() {
         <Route path="/about" element={<About />} />
         <Route path="/catagory" element={<Catdetails />} />
         <Route path="/user" element={<User />} />
+        <Route path="/additem" element={user ? <AddItem /> : <Login />} />
       </Routes>
     </BrowserRouter>
   );
