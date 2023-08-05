@@ -2,10 +2,15 @@ import React from "react";
 import "./navbar.css";
 import { Link } from "react-router-dom";
 import { UseAuthContext } from "../hooks/useAuthContext";
+import { UseLogout } from "../hooks/useLogout";
+import { Avatar, Wrap, WrapItem } from "@chakra-ui/react";
 
 const Navbar = () => {
   const { user } = UseAuthContext();
-
+  const { logout } = UseLogout();
+  const handl_logout = () => {
+    logout();
+  };
   return (
     <React.Fragment>
       <nav className="navbar">
@@ -13,6 +18,7 @@ const Navbar = () => {
           <i className="fa-solid fa-cart-shopping"></i>
           Gebayachn
         </a>
+
         <div className="search">
           <form className="d-flex flex-grow-1">
             <input
@@ -25,14 +31,16 @@ const Navbar = () => {
           </form>
         </div>
         <div className="btns">
-          <button className="btn btn-light ms-3">
-            {!user && <Link to="/login">Login</Link>}
-            {user && (
-              <Link to="/user">
-                <img src={user.pic} alt={user.Name} className="profil_img" />
-              </Link>
-            )}
-          </button>
+          {!user && (
+            <button className="btn btn-light ms-3">
+              <Link to="/login">Login</Link>
+            </button>
+          )}
+          {user && (
+            <button className="btn btn-light ms-3" onClick={handl_logout}>
+              <Link to="/">Log out</Link>
+            </button>
+          )}
         </div>
         <div className="bar">
           <i
@@ -65,6 +73,19 @@ const Navbar = () => {
             </div>
 
             <div className="offcanvas-body">
+              {user && (
+                <div id="onbar_profile_img">
+                  <Wrap>
+                    <WrapItem>
+                      <Avatar
+                        size="xl"
+                        name="Segun Adebayo"
+                        src="https://bit.ly/sage-adebayo"
+                      />
+                    </WrapItem>
+                  </Wrap>
+                </div>
+              )}
               <div className="search1">
                 {/* <i className="fa-solid fa-magnifying-glass"></i> */}
                 <input
@@ -112,14 +133,18 @@ const Navbar = () => {
                 </div>
               </div>
               <div className="btns1">
-                <button className="btn btn-light ms-3">
-                  {!user && (
+                {!user && (
+                  <button className="btn btn-light ms-3">
                     <Link to="/login">
                       <i class="fa-solid fa-lock"></i>Login
                     </Link>
-                  )}
-                  {user && <Link to="/user">Profile</Link>}
-                </button>
+                  </button>
+                )}
+                {user && (
+                  <button className="btn btn-light ms-3">
+                    <Link to="/user"> Profile</Link>
+                  </button>
+                )}
               </div>
               <div className="btns1">
                 <button className="ms-3">
@@ -189,11 +214,38 @@ const Navbar = () => {
             <Link to="/service"> Service</Link>
           </li>
         </ul>
-        <button>
-          <Link to="/dashboard" className="b">
-            Dashboard
-          </Link>
-        </button>
+
+        <div id="icon_and_sell">
+          <div>
+            {user && (
+              <button>
+                <Link to="/additem" className="b">
+                  SELL
+                </Link>
+              </button>
+            )}
+            {!user && (
+              <button>
+                <Link to="/login" className="b">
+                  SELL ITEM
+                </Link>
+              </button>
+            )}
+          </div>
+          <div id="profile_pic_nave">
+            {user && (
+              <Wrap>
+                <WrapItem>
+                  <Avatar
+                    size="md"
+                    name="Segun Adebayo"
+                    src="https://bit.ly/sage-adebayo"
+                  />
+                </WrapItem>
+              </Wrap>
+            )}
+          </div>
+        </div>
       </div>
     </React.Fragment>
   );

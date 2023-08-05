@@ -88,6 +88,9 @@ h3 .navbar-brand1 {
   align-items: center;
   box-shadow: 2px 2px 1px rgb(235, 232, 232);
 }
+#icon_and_sell {
+  display: flex;
+}
 .snav ul {
   display: flex;
   list-style: none;
@@ -168,6 +171,18 @@ h3 .navbar-brand1 {
   margin-left: 1rem;
   width: 90%;
 }
+#onbar_profile_img {
+  cursor: pointer;
+  display: flex;
+  width: 90%;
+  justify-content: center;
+  margin: 0 0 1rem 1rem;
+  padding-top: 5px;
+  /* margin-bottom: 1rem; */
+  border-radius: 7px;
+  /* margin: 0 40%; */
+  background-color: #ff5a00;
+}
 @media (max-width: 730px) {
   .bar {
     display: block;
@@ -176,6 +191,11 @@ h3 .navbar-brand1 {
     display: none;
   }
   .btns {
+    display: none;
+  }
+}
+@media (max-width: 450px) {
+  #profile_pic_nave {
     display: none;
   }
 }
