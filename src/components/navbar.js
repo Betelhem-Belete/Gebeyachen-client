@@ -77,11 +77,7 @@ const Navbar = () => {
                 <div id="onbar_profile_img">
                   <Wrap>
                     <WrapItem>
-                      <Avatar
-                        size="xl"
-                        name="Segun Adebayo"
-                        src="https://bit.ly/sage-adebayo"
-                      />
+                      <Avatar size="xl" name="Segun Adebayo" src={user.pic} />
                     </WrapItem>
                   </Wrap>
                 </div>
@@ -213,6 +209,22 @@ const Navbar = () => {
           <li>
             <Link to="/service"> Service</Link>
           </li>
+          <li>
+            <Link to="/catagory">Shop</Link>
+          </li>
+          <li>
+            <Link to="/catagory">Store</Link>
+          </li>
+
+          <li>
+            <Link to="/user">Account</Link>
+          </li>
+          <li>
+            <Link to="/user">Deliver</Link>
+          </li>
+          <li>
+            <Link to="/dashboard">Dashboard</Link>
+          </li>
         </ul>
 
         <div id="icon_and_sell">
@@ -234,15 +246,13 @@ const Navbar = () => {
           </div>
           <div id="profile_pic_nave">
             {user && (
-              <Wrap>
-                <WrapItem>
-                  <Avatar
-                    size="md"
-                    name="Segun Adebayo"
-                    src="https://bit.ly/sage-adebayo"
-                  />
-                </WrapItem>
-              </Wrap>
+              <Link to="/user">
+                <Wrap>
+                  <WrapItem>
+                    <Avatar size="md" name="Segun Adebayo" src={user.pic} />
+                  </WrapItem>
+                </Wrap>
+              </Link>
             )}
           </div>
         </div>

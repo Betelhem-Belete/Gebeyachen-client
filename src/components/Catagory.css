@@ -30,6 +30,9 @@
 .discription p {
   font-size: 12px;
 }
+.catagorys .cats .card {
+  margin-bottom: 1rem;
+}
 .card_cat .cat_imgs {
   width: 100px;
   border-radius: 7px;

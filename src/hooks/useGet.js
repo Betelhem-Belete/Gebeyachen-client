@@ -8,25 +8,35 @@ const Usefetch = (proxy) => {
   const Toast = useToast();
 
   useEffect(() => {
-    fetch(proxy)
-      .then((res) => {
-        return res.json();
-      })
-      .then((data) => {
-        setDta(data);
-        setLoding(false);
-      })
-      .catch((error) => {
-        Toast({
-          title: error.message,
-          status: "error",
-          duration: 5000,
-          isClosable: true,
-          position: "bottom",
+    try {
+      fetch(proxy)
+        .then((res) => {
+          return res.json();
+        })
+        .then((data) => {
+          setDta(data);
+          setLoding(false);
+        })
+        .catch((error) => {
+          Toast({
+            title: error.message,
+            status: "error",
+            duration: 5000,
+            isClosable: true,
+            position: "bottom",
+          });
+          setError(error.message);
+          setLoding(false);
         });
-        setError(error.message);
-        setLoding(false);
+    } catch (error) {
+      Toast({
+        title: error.message,
+        status: "error",
+        duration: 5000,
+        isClosable: true,
+        position: "bottom",
       });
+    }
   }, [proxy, Toast]);
 
   return { data, loding, error };

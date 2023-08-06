@@ -13,7 +13,7 @@ function Items() {
       {/* card starts */}
       {all_items &&
         all_items.map((items) => (
-          <Link to="/" className="links">
+          <Link to={`/itemdetail/${items._id}`} className="links">
             <div class="card">
               <img
                 src={items.Item_Images}
@@ -22,6 +22,13 @@ function Items() {
               />
               <div class="card-body">
                 <h6 class="card-title">{items.Item_Name}</h6>
+                <i class="fa-solid fa-star" style={{ color: "#fad000" }}></i>
+                <i class="fa-solid fa-star" style={{ color: "#fad000" }}></i>
+                <i class="fa-solid fa-star" style={{ color: "#fad000" }}></i>
+                <i class="fa-solid fa-star" style={{ color: "#fad000" }}></i>
+                <i class="fa-regular fa-star"></i>
+                <i class="fa-regular fa-star"></i>
+                <hr />
                 <a href="/" class="snav1">
                   <button>Add +</button>
                   <p>{items.Item_Price}$</p>

@@ -98,7 +98,7 @@ h3 .navbar-brand1 {
 }
 .snav ul li {
   font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
-  font-weight: 700;
+  font-weight: 300;
   padding: 0.5rem;
   color: rgb(110, 110, 110);
   cursor: pointer;
@@ -178,24 +178,23 @@ h3 .navbar-brand1 {
   justify-content: center;
   margin: 0 0 1rem 1rem;
   padding-top: 5px;
-  /* margin-bottom: 1rem; */
   border-radius: 7px;
-  /* margin: 0 40%; */
+
   background-color: #ff5a00;
 }
-@media (max-width: 730px) {
+#profile_pic_nave img {
+  min-width: 50px;
+  border-radius: 50%;
+  margin: 3px;
+}
+@media (max-width: 740px) {
   .bar {
     display: block;
   }
   .search {
     display: none;
   }
-  .btns {
-    display: none;
-  }
-}
-@media (max-width: 450px) {
-  #profile_pic_nave {
+  .s {
     display: none;
   }
 }
