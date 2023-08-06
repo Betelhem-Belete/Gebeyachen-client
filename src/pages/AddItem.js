@@ -4,10 +4,16 @@ import Navbar from "../components/navbar";
 import { useToast } from "@chakra-ui/react";
 import { useState } from "react";
 import { UseAuthContext } from "../hooks/useAuthContext";
-
+import Usefetch from "../hooks/useGet";
 import "./styles.css";
 import { Link } from "react-router-dom";
-function AddItem() {
+// import Catagory from "../components/Catagory";
+
+const AddItem = () => {
+  const api = "http://localhost:8000/ip/cat/allcat";
+  const { data } = Usefetch(api);
+  const Category = data.cats;
+
   const Toast = useToast();
   const { user } = UseAuthContext();
   const [Item_Images, seItem_Images] = useState(null);
@@ -18,22 +24,30 @@ function AddItem() {
   const [Item_Price, setItem_Price] = useState("");
   const [Item_poster, setItem_poster] = useState("");
   const [isLoading, setIsLoading] = useState(null);
-  const [error, setError] = useState(null);
-
   const [PicLoading, setPicLoading] = useState(false);
   const token = user.token;
+
   const handle_submit = async (e) => {
     e.preventDefault();
-
-    const userID = user._id;
+    console.log(
+      Item_Name,
+      Item_Description,
+      Item_Brand,
+      Item_Price,
+      Item_Images,
+      Item_Category,
+      Item_poster
+    );
+    setIsLoading(true);
+    const userID = user.id;
     setItem_poster(userID);
     if (
-      !Item_Images ||
       !Item_Name ||
       !Item_Description ||
       !Item_Brand ||
-      !Item_Category ||
       !Item_Price ||
+      !Item_Images ||
+      !Item_Category ||
       !Item_poster
     ) {
       Toast({
@@ -43,6 +57,7 @@ function AddItem() {
         isClosable: true,
         position: "bottom",
       });
+      setIsLoading(false);
     }
     try {
       const response = await fetch("http://localhost:8000/ip/item/newitems", {
@@ -52,18 +67,17 @@ function AddItem() {
           authorization: `beared ${token}`,
         },
         body: JSON.stringify({
-          Item_Images,
+          Item_Name,
           Item_Description,
           Item_Brand,
-          Item_Category,
           Item_Price,
+          Item_Images,
+          Item_Category,
           Item_poster,
         }),
       });
-      const json = await response.json();
 
       if (!response.ok) {
-        setError(json.error);
         setIsLoading(false);
         Toast({
           title: "Post ADS in failed",
@@ -72,6 +86,18 @@ function AddItem() {
           isClosable: true,
           position: "bottom",
         });
+        setIsLoading(false);
+      }
+      if (response.ok) {
+        setIsLoading(false);
+        Toast({
+          title: "Post is Added",
+          status: "success",
+          duration: 5000,
+          isClosable: true,
+          position: "bottom",
+        });
+        setIsLoading(false);
       }
     } catch (error) {
       Toast({
@@ -81,8 +107,7 @@ function AddItem() {
         isClosable: true,
         position: "bottom",
       });
-      setError(error.message);
-      setIsLoading(error.message);
+      setIsLoading(false);
     }
   };
   const handle_uploade = (pic) => {
@@ -183,17 +208,25 @@ function AddItem() {
               }}
             />
           </label>
-          <div class="input-group mb-2">
-            <label class="input-group-text" for="inputGroupSelect01">
-              Catagory
-            </label>
-            <select class="form-select" id="inputGroupSelect01">
-              <option selected>Choose...</option>
-              <option value="1">One</option>
-              <option value="2">Two</option>
-              <option value="3">Three</option>
-            </select>
-          </div>
+          {Category && (
+            <div className="input-group mb-2">
+              <label className="input-group-text" htmlFor="inputGroupSelect01">
+                Category
+              </label>
+              <select
+                className="form-select"
+                id="inputGroupSelect01"
+                onChange={(e) => setItem_Category(e.target.value)}
+              >
+                <option defaultValue></option>
+                {Category.map((cat) => (
+                  <option key={cat._id} value={cat._id}>
+                    {cat.catagory_Name}
+                  </option>
+                ))}
+              </select>
+            </div>
+          )}
 
           <label>
             <input
@@ -225,6 +258,6 @@ function AddItem() {
       <Footer />
     </div>
   );
-}
+};
 
 export default AddItem;

@@ -15,7 +15,7 @@ const Catagory = () => {
         {catagory && (
           <div className="cats">
             {catagory.map((cats) => (
-              <Link to="/catagory">
+              <Link to={`/categorydetail/${cats._id}`}>
                 <div class="card">
                   <img
                     src={cats.cat_pic}

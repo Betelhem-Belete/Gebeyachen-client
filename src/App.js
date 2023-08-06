@@ -8,9 +8,10 @@ import About from "./pages/About";
 import Catdetails from "./pages/Catdetails";
 import User from "./pages/User";
 import AddItem from "./pages/AddItem";
-
+import CatagoryPg from "./pages/CatagoryPg";
 import Signup from "./pages/Signup";
 import { UseAuthContext } from "./hooks/useAuthContext";
+import Itemsdetails from "./pages/Itemsdetails";
 
 function App() {
   const { user } = UseAuthContext();
@@ -24,9 +25,11 @@ function App() {
         <Route path="/service" element={<Servic />} />
         <Route path="/dashboard" element={<Dashboard />} />
         <Route path="/about" element={<About />} />
-        <Route path="/catagory" element={<Catdetails />} />
-        <Route path="/user" element={<User />} />
+        <Route path="/catagory" element={<CatagoryPg />} />
+        <Route path="/user" element={user ? <User /> : <Home />} />
+        <Route path="/itemdetail/:id" element={<Itemsdetails />} />
         <Route path="/additem" element={user ? <AddItem /> : <Login />} />
+        <Route path="/categorydetail/:id" element={<Catdetails />} />
       </Routes>
     </BrowserRouter>
   );
