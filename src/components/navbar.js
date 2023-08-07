@@ -1,12 +1,45 @@
-import React from "react";
+import React, { useState } from "react";
 import "./navbar.css";
 import { Link } from "react-router-dom";
 import { UseAuthContext } from "../hooks/useAuthContext";
 import { UseLogout } from "../hooks/useLogout";
 import { Avatar, Wrap, WrapItem } from "@chakra-ui/react";
-
+import { useToast } from "@chakra-ui/react";
+import axios from "axios";
 const Navbar = () => {
   const { user } = UseAuthContext();
+  const [search, setSearch] = useState();
+  const [Loading, setLoading] = useState(false);
+  const [searchResult, setSearchResult] = useState([]);
+  const Toast = useToast();
+  console.log("search", searchResult);
+  const handle_Search = async (query) => {
+    setSearch(query);
+    if (!query) {
+      return;
+    }
+
+    try {
+      setLoading(true);
+
+      const { data } = await axios.get(
+        `http://localhost:8000/ip/item?search=${search}`
+      );
+      const tati = data.Item;
+      console.log(tati);
+      setLoading(false);
+      setSearchResult(tati);
+    } catch (error) {
+      Toast({
+        title: "Error Occured!",
+        description: "Failed to Load the Search Results",
+        status: "error",
+        duration: 5000,
+        isClosable: true,
+        position: "bottom-left",
+      });
+    }
+  };
   const { logout } = UseLogout();
   const handl_logout = () => {
     logout();
@@ -22,24 +55,93 @@ const Navbar = () => {
         <div className="search">
           <form className="d-flex flex-grow-1">
             <input
+              data-bs-toggle="modal"
+              data-bs-target="#exampleModal"
               className="form-control flex-grow-1"
               type="search"
-              placeholder="Search"
+              placeholder="Search items"
               aria-label="Search"
               style={{ width: "400px" }}
             />
           </form>
+          <div
+            class="modal fade"
+            id="exampleModal"
+            tabindex="-1"
+            aria-labelledby="exampleModalLabel"
+            aria-hidden="true"
+          >
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h1 class="modal-title fs-5" id="exampleModalLabel">
+                    Search Any Item
+                  </h1>
+                  <button
+                    type="button"
+                    class="btn-close"
+                    data-bs-dismiss="modal"
+                    aria-label="Close"
+                  ></button>
+                </div>
+                <div class="modal-body">
+                  <input
+                    className="form-control d-flex flex-grow-1"
+                    type="search"
+                    placeholder="Search"
+                    aria-label="Search"
+                    style={{ width: "450px" }}
+                    onChange={(e) => {
+                      handle_Search(e.target.value);
+                    }}
+                  />
+                  {searchResult && (
+                    <div
+                      className="search_results"
+                      data-bs-dismiss="modal"
+                      aria-label="Close"
+                    >
+                      {searchResult.map((it) => (
+                        <Link to={`/itemdetail/${it._id}`}>
+                          <div
+                            className="search_result"
+                            key={it._id}
+                            aria-label="Close"
+                            data-bs-dismiss="modal"
+                          >
+                            <img
+                              className="search_img"
+                              src={it.Item_Images}
+                              alt={it.Item_Brand}
+                              style={{ width: "100%" }}
+                            />
+                            <div className="search_title">
+                              <h5>{it.Item_Brand}</h5>
+                              <span>{it.Item_Description}</span>
+                            </div>
+                          </div>
+                        </Link>
+                      ))}
+                    </div>
+                  )}
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
+
         <div className="btns">
           {!user && (
-            <button className="btn btn-light ms-3">
-              <Link to="/login">Login</Link>
-            </button>
+            <Link to="/login">
+              <button className="btn btn-light ms-3">Login</button>
+            </Link>
           )}
           {user && (
-            <button className="btn btn-light ms-3" onClick={handl_logout}>
-              <Link to="/">Log out</Link>
-            </button>
+            <Link to="/">
+              <button className="btn btn-light ms-3" onClick={handl_logout}>
+                Log out
+              </button>
+            </Link>
           )}
         </div>
         <div className="bar">
@@ -120,9 +222,40 @@ const Navbar = () => {
                           type="search"
                           placeholder="Search"
                           aria-label="Search"
-                          style={{ width: "400px" }}
+                          style={{ width: "450px" }}
+                          onChange={(e) => {
+                            handle_Search(e.target.value);
+                          }}
                         />
-                        <div className="search_results">tati</div>
+                        {searchResult && (
+                          <div
+                            className="search_results"
+                            data-bs-dismiss="modal"
+                            aria-label="Close"
+                          >
+                            {searchResult.map((it) => (
+                              <Link to={`/itemdetail/${it._id}`}>
+                                <div
+                                  className="search_result"
+                                  key={it._id}
+                                  aria-label="Close"
+                                  data-bs-dismiss="modal"
+                                >
+                                  <img
+                                    className="search_img"
+                                    src={it.Item_Images}
+                                    alt={it.Item_Brand}
+                                    style={{ width: "100%" }}
+                                  />
+                                  <div className="search_title">
+                                    <h5>{it.Item_Brand}</h5>
+                                    <span>{it.Item_Description}</span>
+                                  </div>
+                                </div>
+                              </Link>
+                            ))}
+                          </div>
+                        )}
                       </div>
                     </div>
                   </div>
@@ -175,19 +308,28 @@ const Navbar = () => {
                     <i className="fa-solid fa-book"></i>Catagory
                   </Link>
                 </li>
-                <li>
-                  <Link to="/user">
-                    <i className="fa-solid fa-user"></i>Account
-                  </Link>
-                </li>
+                {user && (
+                  <li>
+                    <Link to="/user">
+                      <i className="fa-solid fa-user"></i>Account
+                    </Link>
+                  </li>
+                )}
+                {!user && (
+                  <li>
+                    <Link to="/login">
+                      <i className="fa-solid fa-user"></i>Account
+                    </Link>
+                  </li>
+                )}
                 <li>
                   <Link to="/dashboard">
                     <i className="fa-solid fa-gear"></i>Dashboard
                   </Link>
                 </li>
                 <li>
-                  <Link to="/user">
-                    <i className="fa-solid fa-truck-fast"></i>Deliver
+                  <Link to="/doc">
+                    <i className="fa-solid fa-truck-fast"></i>Doc
                   </Link>
                 </li>
               </ul>
@@ -216,15 +358,24 @@ const Navbar = () => {
             <Link to="/catagory">Store</Link>
           </li>
 
+          {user && (
+            <li>
+              <Link to="/user">Account</Link>
+            </li>
+          )}
+          {!user && (
+            <li>
+              <Link to="/login">Account</Link>
+            </li>
+          )}
           <li>
-            <Link to="/user">Account</Link>
+            <Link to="/doc">Doc</Link>
           </li>
-          <li>
-            <Link to="/user">Deliver</Link>
-          </li>
-          <li>
-            <Link to="/dashboard">Dashboard</Link>
-          </li>
+          {user && user.isAdmin && (
+            <li>
+              <Link to="/dashboard">Dashboard</Link>
+            </li>
+          )}
         </ul>
 
         <div id="icon_and_sell">
@@ -239,7 +390,7 @@ const Navbar = () => {
             {!user && (
               <button>
                 <Link to="/login" className="b">
-                  SELL ITEM
+                  SELL_ITEM
                 </Link>
               </button>
             )}

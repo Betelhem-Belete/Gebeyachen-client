@@ -4,6 +4,7 @@ body {
   display: flex;
   flex-direction: column;
   min-height: 100vh;
+  overflow-x: hidden;
 }
 
 .content {
@@ -31,7 +32,7 @@ body {
   column-gap: 1rem;
 }
 .user_grid .user_coll_profile {
-  border: solid 3px #ff5a00;
+  border: solid 3px #ff5900a1;
   border-radius: 10px;
   box-shadow: 2px 2px 10px gray;
   height: fit-content;
@@ -39,7 +40,7 @@ body {
 .user_grid .user_coll_profile .user_pic {
   border: solid 1px rgb(235, 145, 145);
   border-radius: 7px;
-  background-color: #ff5a00;
+  background-image: linear-gradient(#ff59009f, #ff5a00);
   color: white;
   display: flex;
   justify-content: center;
@@ -57,11 +58,11 @@ body {
   border-radius: 7px;
   cursor: pointer;
 }
-.user_grid .user_coll_profile ul li:last-child {
+.user_grid .user_coll_profile ul li .logout {
   background-color: #ff5a00;
   color: white;
 }
-.user_grid .user_coll_profile ul li:last-child:hover {
+.user_grid .user_coll_profile ul li .logout:hover {
   background-color: #f57c51;
 }
 .user_grid .user_coll_profile ul li:hover {
@@ -210,6 +211,52 @@ body {
 .catagoryPg .cats .card .cat_imgs {
   max-width: 200px;
   border-radius: 7px;
+}
+/* dashboard */
+.Dash_top {
+  display: grid;
+  grid-template-columns: auto auto auto auto;
+  gap: 2rem;
+}
+.Dash_top .top_box {
+  height: 100px;
+  background-color: #f57c51;
+  border-radius: 20%;
+}
+.Dash_middle {
+  margin-top: 2rem;
+  display: grid;
+  grid-template-columns: 55% 42%;
+  gap: 2rem;
+}
+.Dash_social {
+  margin-top: 2rem;
+  display: grid;
+  grid-template-columns: auto auto auto auto;
+  gap: 2rem;
+}
+.Dash_social .social_box {
+  height: 100px;
+  background-color: #f57c51;
+}
+.Dash_chart {
+  margin-top: 2rem;
+  display: grid;
+  grid-template-columns: auto auto;
+  gap: 2rem;
+}
+.Dash_chart .chart_box {
+  height: 200px;
+  background-color: #f57c51;
+}
+/* 404 */
+.pag_not {
+  margin: auto;
+  width: 600px;
+}
+.pag_not_h1 {
+  text-align: center;
+  margin-bottom: 3rem;
 }
 /* for user post */
 .content {

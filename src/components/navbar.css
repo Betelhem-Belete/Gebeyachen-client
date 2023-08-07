@@ -1,5 +1,6 @@
 @import url("https://fonts.googleapis.com/css2?family=Borel&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Bitter:ital@1&display=swap");
+
 .navbar {
   /* position: sticky;
   top: 0; */
@@ -82,14 +83,22 @@ h3 .navbar-brand1 {
 /* for the second nave */
 
 .snav {
-  overflow-x: auto;
   display: flex;
   justify-content: space-between;
   align-items: center;
   box-shadow: 2px 2px 1px rgb(235, 232, 232);
 }
+@media (max-width: 740px) {
+  .snav {
+    overflow-x: auto;
+  }
+}
 #icon_and_sell {
   display: flex;
+}
+#icon_and_sell button a {
+  display: block;
+  padding: 0.5rem 1rem;
 }
 .snav ul {
   display: flex;
@@ -99,11 +108,16 @@ h3 .navbar-brand1 {
 .snav ul li {
   font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
   font-weight: 300;
-  padding: 0.5rem;
+
   color: rgb(110, 110, 110);
   cursor: pointer;
 }
+.snav ul li a {
+  padding: 0.5rem;
+}
 .snav ul li:hover {
+  border-bottom: solid 1px #f57c51;
+  transition: 0.2s;
   color: #f57c51;
 }
 .snav ul li a:hover {
@@ -116,7 +130,6 @@ h3 .navbar-brand1 {
   background-color: #ff5a00;
   border-radius: 6px;
   margin: 9px 1rem 9px 0;
-  padding: 0.5rem 1rem;
 }
 .snav button:hover {
   background-color: #f57c51;
@@ -166,10 +179,14 @@ h3 .navbar-brand1 {
 }
 .search_results {
   display: block;
-  border: solid 1px gray;
+
   margin-top: 1rem;
   margin-left: 1rem;
   width: 90%;
+}
+.search_result:hover {
+  background-color: #f57c51;
+  color: white;
 }
 #onbar_profile_img {
   cursor: pointer;
@@ -187,6 +204,21 @@ h3 .navbar-brand1 {
   border-radius: 50%;
   margin: 3px;
 }
+.search_result {
+  box-shadow: 2px 3px 8px goldenrod;
+  border-radius: 7px;
+  display: flex;
+  margin-bottom: 1rem;
+}
+.search_result .search_title {
+  padding-left: 1rem;
+  display: flex;
+  flex-direction: column;
+}
+.search_img {
+  border-radius: 7px;
+  max-width: 50px;
+}
 @media (max-width: 740px) {
   .bar {
     display: block;
@@ -195,6 +227,9 @@ h3 .navbar-brand1 {
     display: none;
   }
   .s {
+    display: none;
+  }
+  .navbar .btns {
     display: none;
   }
 }

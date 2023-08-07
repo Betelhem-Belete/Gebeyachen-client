@@ -1,0 +1,62 @@
+.documentation {
+  margin: 2px;
+  padding: 0;
+  font-family: "Poppins", sans-serif;
+  box-sizing: border-box;
+}
+
+.boundary {
+  height: 200px;
+}
+
+.mern {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+}
+
+.mern img {
+  margin: 30px 0;
+  width: 400px;
+}
+
+.mern .txt {
+  width: 550px;
+}
+
+.mern .txt h1 {
+  font-size: 30px;
+  font-style: poppins;
+  margin-bottom: 10px;
+  font-weight: 100;
+}
+
+.mern .txt h3 {
+  font-size: 20px;
+  font-style: poppins;
+  margin-bottom: 10px;
+  color: #aaa;
+}
+
+.mern .txt p {
+  margin-top: 16px;
+  line-height: 20px;
+  letter-spacing: 2px;
+  font-style: poppins;
+}
+
+@media (max-width: 768px) {
+  .boundary {
+    display: none;
+  }
+  .mern {
+    flex-direction: column;
+  }
+  p {
+  }
+
+  .mern .txt {
+    width: 400px;
+    text-align: center;
+  }
+}

@@ -1,18 +1,190 @@
-import React from "react";
+import React, { useState } from "react";
 import Navbar from "../components/navbar";
 import Footer from "../components/footer";
 import "./styles.css";
+import "../pages/login.css";
+import { useToast } from "@chakra-ui/react";
+import { UseAuthContext } from "../hooks/useAuthContext";
+import { useNavigate } from "react-router-dom";
 
 function Dashborad() {
+  const Toast = useToast();
+  const { user } = UseAuthContext();
+  const navigate = useNavigate();
+  if (!user.isAdmin) {
+    navigate("/");
+  }
+  const [catagory_Name, setcatagory_Name] = useState("");
+  const [cat_description, setcat_description] = useState("");
+  const [pic, setPic] = useState(null);
+  const [PicLoading, setPicLoading] = useState(false);
+  const handle_uploade = (pic) => {
+    const uploade = "https://api.cloudinary.com/v1_1/yeabtsega/image/upload";
+    setPicLoading(true);
+    if (pic.type === "image/jpeg" || pic.type === "image/png") {
+      const data = new FormData();
+      data.append("file", pic);
+      data.append("upload_preset", "chat_app");
+      data.append("cloud_name", "yeabtsega");
+      fetch(uploade, {
+        method: "post",
+        body: data,
+      })
+        .then((res) => res.json())
+        .then((data) => {
+          setPic(data.url.toString());
+
+          setPicLoading(false);
+        })
+        .catch((err) => {
+          Toast({
+            title: err.message,
+            status: "error",
+            duration: 5000,
+            isClosable: true,
+            position: "bottom",
+          });
+          console.log(err);
+          setPicLoading(false);
+        });
+    } else {
+      Toast({
+        title: "image type is not supported",
+        status: "warning",
+        duration: 5000,
+        isClosable: true,
+        position: "bottom",
+      });
+      return setPicLoading(false);
+    }
+  };
+
+  const handle_submit = async () => {
+    if (!catagory_Name || !cat_description || !pic) {
+      Toast({
+        title: "fill all the space",
+        status: "error",
+        duration: 5000,
+        isClosable: true,
+        position: "bottom",
+      });
+    }
+    try {
+      const response = await fetch("http://localhost:8000/ip/cat/newcat", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          catagory_Name,
+          cat_description,
+          cat_pic: pic,
+        }),
+      });
+
+      if (!response.ok) {
+        Toast({
+          title: "Adding category in failed",
+          status: "error",
+          duration: 5000,
+          isClosable: true,
+          position: "bottom",
+        });
+      }
+      if (response.ok) {
+        Toast({
+          title: "category is Added",
+          status: "success",
+          duration: 5000,
+          isClosable: true,
+          position: "bottom",
+        });
+      }
+    } catch (error) {
+      Toast({
+        title: error.message,
+        status: "error",
+        duration: 5000,
+        isClosable: true,
+        position: "bottom",
+      });
+    }
+  };
   return (
     <>
       <Navbar />
       <div className="container content">
-        <div className="Dash_top"></div>
-        <div className="Dash_middle"></div>
-        <div className="Dash_soceal"></div>
-        <div className="Dash_chart"></div>
-        <div className="Dash_user"></div>
+        <div className="Dash_top">
+          <div className="top_box"></div>
+          <div className="top_box"></div>
+          <div className="top_box"></div>
+          <div className="top_box"></div>
+        </div>
+        <div className="Dash_middle">
+          <div className="mid_box">
+            {" "}
+            <form class="form" onSubmit={handle_submit}>
+              <p class="title">Add Category </p>
+              <p class="message">As an Admin you have full access </p>
+              <label>
+                <input
+                  class="input"
+                  type="text"
+                  placeholder="Category_Name"
+                  required
+                  value={catagory_Name}
+                  onChange={(e) => {
+                    setcatagory_Name(e.target.value);
+                  }}
+                />
+              </label>
+
+              <label>
+                <textarea
+                  class="input"
+                  type="text"
+                  placeholder="description"
+                  required
+                  value={cat_description}
+                  onChange={(e) => {
+                    setcat_description(e.target.value);
+                  }}
+                />
+              </label>
+              <label>
+                <input
+                  class="input"
+                  type="file"
+                  onChange={(e) => handle_uploade(e.target.files[0])}
+                />
+              </label>
+              {!PicLoading && (
+                <button className="submit" type="submit">
+                  Add category
+                </button>
+              )}
+              {PicLoading && (
+                <button className="submit" disabled type="submit">
+                  <div class="spinner-border text-warning" role="status">
+                    <span class="visually-hidden">Loading...</span>
+                  </div>
+                </button>
+              )}
+              {/* {error && <div className="error">{error}</div>} */}
+            </form>
+          </div>
+          <div className="mid_box"></div>
+        </div>
+        {/* <div className="Dash_social">
+          <div className="social_box">1</div>
+          <div className="social_box">2</div>
+          <div className="social_box">3</div>
+          <div className="social_box">4</div>
+        </div>
+        <div className="Dash_chart">
+          <div className="chart_box"></div>
+          <div className="chart_box"></div>
+        </div> */}
       </div>
       <Footer />
     </>

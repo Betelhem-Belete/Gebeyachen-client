@@ -28,7 +28,7 @@ function Cat_details() {
               {/* card starts */}
               {all_items &&
                 all_items.map((items) => (
-                  <Link to="/" className="links">
+                  <Link to={`/itemdetail/${items._id}`} className="links">
                     <div class="card">
                       <img
                         src={items.Item_Images}

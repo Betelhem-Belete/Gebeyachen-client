@@ -57,7 +57,7 @@ function User() {
               <li>
                 <i class="fa-brands fa-servicestack"></i>My clients
               </li>
-              <li onClick={handl_logout}>
+              <li className="logout" onClick={handl_logout}>
                 <i class="fa-solid fa-lock"></i>Log out
               </li>
             </ul>
