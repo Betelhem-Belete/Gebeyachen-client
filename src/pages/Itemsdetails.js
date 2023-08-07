@@ -49,7 +49,7 @@ function Itemsdetails() {
                   <div className="but">
                     <button>
                       <span>Birr : </span>
-                      {items.Item_Price}
+                      {items.Item_Price.toLocaleString()}$
                     </button>
                     <span class="snav1">
                       <button>Add +</button>
@@ -70,7 +70,7 @@ function Itemsdetails() {
               <>
                 {" "}
                 <div className="price">
-                  <h3>ETB : {items.Item_Price} $</h3>
+                  <h3>ETB : {items.Item_Price.toLocaleString()} $</h3>
                   <hr />
                   <p>market price : {items.Item_Price + 500}</p>
                   <p>request callback</p>

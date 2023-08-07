@@ -25,7 +25,10 @@ function App() {
         <Route path="/login" element={user ? <Home /> : <Login />} />
         <Route path="/signup" element={user ? <Home /> : <Signup />} />
         <Route path="/service" element={<Servic />} />
-        <Route path="/dashboard" element={<Dashboard />} />
+        <Route
+          path="/dashboard"
+          element={user && user.isAdmin ? <Dashboard /> : <Home />}
+        />
         <Route path="/about" element={<About />} />
         <Route path="/catagory" element={<CatagoryPg />} />
         <Route path="/doc" element={<Doc />} />

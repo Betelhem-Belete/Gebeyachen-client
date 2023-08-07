@@ -39,7 +39,7 @@ function Cat_details() {
                         <h6 class="card-title">{items.Item_Name}</h6>
                         <a href="/" class="snav1">
                           <button>Add +</button>
-                          <p>{items.Item_Price}$</p>
+                          <p>{items.Item_Price.toLocaleString()}$</p>
                         </a>
                       </div>
                     </div>

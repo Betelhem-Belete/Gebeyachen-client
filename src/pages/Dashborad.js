@@ -18,6 +18,7 @@ function Dashborad() {
   const [cat_description, setcat_description] = useState("");
   const [pic, setPic] = useState(null);
   const [PicLoading, setPicLoading] = useState(false);
+  ////////////////////
   const handle_uploade = (pic) => {
     const uploade = "https://api.cloudinary.com/v1_1/yeabtsega/image/upload";
     setPicLoading(true);
@@ -59,8 +60,11 @@ function Dashborad() {
     }
   };
 
-  const handle_submit = async () => {
-    if (!catagory_Name || !cat_description || !pic) {
+  const handle_submit = async (e) => {
+    e.preventDefault();
+    const cat_pic = pic;
+    console.log(catagory_Name, cat_description, cat_pic);
+    if (!catagory_Name || !cat_description || !cat_pic) {
       Toast({
         title: "fill all the space",
         status: "error",
@@ -78,13 +82,13 @@ function Dashborad() {
         body: JSON.stringify({
           catagory_Name,
           cat_description,
-          cat_pic: pic,
+          cat_pic,
         }),
       });
 
       if (!response.ok) {
         Toast({
-          title: "Adding category in failed",
+          title: response.message,
           status: "error",
           duration: 5000,
           isClosable: true,
@@ -114,12 +118,6 @@ function Dashborad() {
     <>
       <Navbar />
       <div className="container content">
-        <div className="Dash_top">
-          <div className="top_box"></div>
-          <div className="top_box"></div>
-          <div className="top_box"></div>
-          <div className="top_box"></div>
-        </div>
         <div className="Dash_middle">
           <div className="mid_box">
             {" "}
@@ -173,18 +171,27 @@ function Dashborad() {
               {/* {error && <div className="error">{error}</div>} */}
             </form>
           </div>
-          <div className="mid_box"></div>
+          <div className="mid_box">
+            <div class="cplx-header">
+              <h1>Welcome, Admin!</h1>
+            </div>
+            <div class="cplx-container">
+              <div class="cplx-admin-panel">
+                <div class="cplx-icon">
+                  <i class="fas fa-users-cog"></i>
+                </div>
+                <div class="cplx-info">
+                  <h2>Admin Dashboard</h2>
+                  <p>
+                    As an admin, you have the important role of managing users,
+                    settings, and maintaining the system's functionality and
+                    security.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
-        {/* <div className="Dash_social">
-          <div className="social_box">1</div>
-          <div className="social_box">2</div>
-          <div className="social_box">3</div>
-          <div className="social_box">4</div>
-        </div>
-        <div className="Dash_chart">
-          <div className="chart_box"></div>
-          <div className="chart_box"></div>
-        </div> */}
       </div>
       <Footer />
     </>
