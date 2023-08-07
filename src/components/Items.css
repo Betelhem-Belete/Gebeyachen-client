@@ -3,11 +3,14 @@
   flex-wrap: wrap;
   justify-content: center;
   border-radius: 7px;
+  margin-top: 4rem;
 }
 .items .links:hover {
   color: black;
   border-radius: 7px;
-  box-shadow: 3px 3px 7px rgb(196, 193, 193);
+}
+.items .card:hover {
+  box-shadow: 3px 3px 7px rgb(126, 125, 125);
   transition: 0.3s;
 }
 .items .card {
@@ -38,6 +41,10 @@
 }
 .items .card-body .snav1 p:hover {
   color: black;
+}
+.items .card-img-top {
+  aspect-ratio: 3/2;
+  object-fit: cover;
 }
 @media (max-width: 425px) {
   .items {

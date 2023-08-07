@@ -31,7 +31,7 @@ function Items() {
                 <hr />
                 <a href="/" class="snav1">
                   <button>Add +</button>
-                  <p>{items.Item_Price}$</p>
+                  <p>{items.Item_Price.toLocaleString()}$</p>
                 </a>
               </div>
             </div>
