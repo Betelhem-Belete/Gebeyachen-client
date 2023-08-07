@@ -13,7 +13,7 @@
 .items .card {
   margin: 0.4rem;
   max-width: 12rem;
-  border: solid 1px #e9c9b8;
+  /* border: solid 1px #e9c9b8; */
 }
 .items .snav1 button {
   font-weight: 400;
@@ -39,11 +39,19 @@
 .items .card-body .snav1 p:hover {
   color: black;
 }
-@media (max-width: 421px) {
+@media (max-width: 425px) {
   .items {
     width: 100%;
   }
+  .items .card {
+    max-width: 21rem;
+  }
   .card {
     max-width: 18rem;
+  }
+}
+@media (max-width: 629px) and (min-width: 521px) {
+  .items .card {
+    max-width: 15rem;
   }
 }

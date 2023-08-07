@@ -84,7 +84,7 @@ function Signup() {
   };
   return (
     <React.Fragment>
-      <div className="container">
+      <div className="containers_login">
         <form class="form" onSubmit={handle_submit}>
           <p class="title">Register </p>
           <p class="message">Signup now and get full access to our app. </p>

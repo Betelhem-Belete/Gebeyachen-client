@@ -41,7 +41,10 @@ function Itemsdetails() {
                     <span>Brand : </span>
                     {items.Item_Brand}
                   </p>
-
+                  <p class="card-text">
+                    <span>Address : </span>
+                    {items.Item_poster.Address}
+                  </p>
                   <hr />
                   <div className="but">
                     <button>
@@ -88,8 +91,17 @@ function Itemsdetails() {
                     <h4>{items.Item_poster.Name}</h4>
                   </div>
                   <hr />
-                  <p className="p">{items.Item_poster.Phone}</p>
-                  <p className="p">start chat</p>
+                  <p className="p">
+                    <i class="fa-solid fa-phone">
+                      <span>{"    "}</span>
+                      {items.Item_poster.Phone}
+                    </i>
+                  </p>
+                  <p className="p">
+                    <i class="fa-brands fa-rocketchat">
+                      <span>{"    "}</span>start chat
+                    </i>
+                  </p>
                 </div>
                 <div className="sefty">
                   <h4>Safety tips</h4>

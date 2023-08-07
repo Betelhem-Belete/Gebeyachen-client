@@ -1,9 +1,27 @@
+.containers_login {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-image: url("../assets/login.svg");
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
 .form {
+  box-shadow: 1px 1px 20px rgba(211, 211, 211, 0.459);
+  background: rgba(
+    230,
+    197,
+    197,
+    0.329
+  ); /* Adjust the alpha value for transparency */
+  backdrop-filter: blur(30px);
   display: flex;
   flex-direction: column;
   gap: 10px;
   max-width: 350px;
-  background-color: #fff;
+  /* background-color: #fff; */
   padding: 20px;
   border-radius: 20px;
   position: relative;
@@ -14,7 +32,7 @@
 }
 .title {
   font-size: 28px;
-  color: #ff5a00;
+  color: hsl(21, 100%, 50%);
   font-weight: 600;
   letter-spacing: -1px;
   position: relative;

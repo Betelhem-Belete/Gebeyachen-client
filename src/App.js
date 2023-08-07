@@ -10,8 +10,10 @@ import User from "./pages/User";
 import AddItem from "./pages/AddItem";
 import CatagoryPg from "./pages/CatagoryPg";
 import Signup from "./pages/Signup";
+import Doc from "./pages/Doc";
 import { UseAuthContext } from "./hooks/useAuthContext";
 import Itemsdetails from "./pages/Itemsdetails";
+import Notfound from "./pages/404";
 
 function App() {
   const { user } = UseAuthContext();
@@ -26,10 +28,12 @@ function App() {
         <Route path="/dashboard" element={<Dashboard />} />
         <Route path="/about" element={<About />} />
         <Route path="/catagory" element={<CatagoryPg />} />
+        <Route path="/doc" element={<Doc />} />
         <Route path="/user" element={user ? <User /> : <Home />} />
         <Route path="/itemdetail/:id" element={<Itemsdetails />} />
         <Route path="/additem" element={user ? <AddItem /> : <Login />} />
         <Route path="/categorydetail/:id" element={<Catdetails />} />
+        <Route path="*" element={<Notfound />} />
       </Routes>
     </BrowserRouter>
   );
