@@ -4,7 +4,7 @@ import Usefetch from "../hooks/useGet";
 import { Link } from "react-router-dom";
 
 const Catagory = () => {
-  const api = "http://localhost:8000/ip/cat/allcat";
+  const api = "https://gebeyachn-server-apiendpoint.onrender.com/ip/cat/allcat";
   const { data } = Usefetch(api);
   const catagory = data.cats;
 

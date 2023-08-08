@@ -74,17 +74,20 @@ function Dashborad() {
       });
     }
     try {
-      const response = await fetch("http://localhost:8000/ip/cat/newcat", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          catagory_Name,
-          cat_description,
-          cat_pic,
-        }),
-      });
+      const response = await fetch(
+        "https://gebeyachn-server-apiendpoint.onrender.com/ip/cat/newcat",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            catagory_Name,
+            cat_description,
+            cat_pic,
+          }),
+        }
+      );
 
       if (!response.ok) {
         Toast({

@@ -23,7 +23,7 @@ const Navbar = () => {
       setLoading(true);
 
       const { data } = await axios.get(
-        `http://localhost:8000/ip/item?search=${search}`
+        `https://gebeyachn-server-apiendpoint.onrender.com/ip/item?search=${search}`
       );
       const tati = data.Item;
       console.log(tati);
@@ -38,6 +38,7 @@ const Navbar = () => {
         isClosable: true,
         position: "bottom-left",
       });
+      setLoading(false);
     }
   };
   const { logout } = UseLogout();
@@ -95,6 +96,13 @@ const Navbar = () => {
                       handle_Search(e.target.value);
                     }}
                   />
+                  {Loading && (
+                    <button className="submits" disabled type="submit">
+                      <div class="spinner-border text-warning" role="status">
+                        <span class="visually-hidden">Loading...</span>
+                      </div>
+                    </button>
+                  )}
                   {searchResult && (
                     <div
                       className="search_results"

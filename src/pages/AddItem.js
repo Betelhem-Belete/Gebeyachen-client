@@ -10,7 +10,7 @@ import { Link } from "react-router-dom";
 // import Catagory from "../components/Catagory";
 
 const AddItem = () => {
-  const api = "http://localhost:8000/ip/cat/allcat";
+  const api = "https://gebeyachn-server-apiendpoint.onrender.com/ip/cat/allcat";
   const { data } = Usefetch(api);
   const Category = data.cats;
 
@@ -60,22 +60,25 @@ const AddItem = () => {
       setIsLoading(false);
     }
     try {
-      const response = await fetch("http://localhost:8000/ip/item/newitems", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          authorization: `beared ${token}`,
-        },
-        body: JSON.stringify({
-          Item_Name,
-          Item_Description,
-          Item_Brand,
-          Item_Price,
-          Item_Images,
-          Item_Category,
-          Item_poster,
-        }),
-      });
+      const response = await fetch(
+        "https://gebeyachn-server-apiendpoint.onrender.com/ip/item/newitems",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            authorization: `beared ${token}`,
+          },
+          body: JSON.stringify({
+            Item_Name,
+            Item_Description,
+            Item_Brand,
+            Item_Price,
+            Item_Images,
+            Item_Category,
+            Item_poster,
+          }),
+        }
+      );
 
       if (!response.ok) {
         setIsLoading(false);
@@ -242,7 +245,7 @@ const AddItem = () => {
               Add Post
             </button>
           )}
-          {PicLoading && (
+          {PicLoading && isLoading && (
             <button className="submit" disabled type="submit">
               <div class="spinner-border text-warning" role="status">
                 <span class="visually-hidden">Loading...</span>

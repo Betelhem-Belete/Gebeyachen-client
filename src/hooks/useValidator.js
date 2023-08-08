@@ -14,24 +14,23 @@ useEffect(()=>{
       return
     }
       const tok = user.token  
-    fetch('http://localhost:4000/api/user/verify',{
-      method : 'POST',
-      headers : {'authorization':`beared ${tok}`}
+    fetch("https://gebeyachn-server-apiendpoint.onrender.com/api/user/verify", {
+      method: "POST",
+      headers: { authorization: `beared ${tok}` },
     })
-    .then((res)=>{
-      return res.json()
-    })
-    .then((data)=>{
-      const states = data.user
-      setValid(states)
-      if(!states){
-        dispatch({type: 'LOGOUT'})
-      }
-      
-    })
-    .catch((error)=>{
-      console.log(error)
-    })
+      .then((res) => {
+        return res.json();
+      })
+      .then((data) => {
+        const states = data.user;
+        setValid(states);
+        if (!states) {
+          dispatch({ type: "LOGOUT" });
+        }
+      })
+      .catch((error) => {
+        console.log(error);
+      });
   },[ dispatch,user])
 
   return {valid}

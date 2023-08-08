@@ -32,8 +32,7 @@ function Servic() {
                 </div>
                 <p>
                   A wide range of products available for our customers to
-                  browse, compare and purchase and also to sell freely with 0
-                  price.
+                  browse, compare and purchase and also to sell with 0 price.
                 </p>
                 <hr />
               </div>

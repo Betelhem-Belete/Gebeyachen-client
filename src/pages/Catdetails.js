@@ -12,7 +12,7 @@ function Cat_details() {
   const _id = useParams();
   const id = _id.id;
   console.log(id);
-  const api = `http://localhost:8000/ip/item/catitems/${id}`;
+  const api = `https://gebeyachn-server-apiendpoint.onrender.com/ip/item/catitems/${id}`;
   const { data } = Usefetch(api);
   const all_items = data.cat_one;
   return (

@@ -10,7 +10,7 @@ function Itemsdetails() {
   const _id = useParams();
   const id = _id.id;
   console.log(id);
-  const api = `http://localhost:8000/ip/item/oneitem/${id}`;
+  const api = `https://gebeyachn-server-apiendpoint.onrender.com/ip/item/oneitem/${id}`;
   const { data } = Usefetch(api);
   const items = data.all_Items;
   console.log(items);

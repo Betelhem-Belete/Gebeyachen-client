@@ -4,7 +4,8 @@ import Usefetch from "../hooks/useGet";
 import { Link } from "react-router-dom";
 
 function Items() {
-  const api = "http://localhost:8000/ip/item/allitems";
+  const api =
+    "https://gebeyachn-server-apiendpoint.onrender.com/ip/item/allitems";
   const { data } = Usefetch(api);
   const all_items = data.all_Items;
   console.log("items", all_items);

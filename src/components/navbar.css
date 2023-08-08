@@ -88,6 +88,9 @@ h3 .navbar-brand1 {
   align-items: center;
   box-shadow: 2px 2px 1px rgb(235, 232, 232);
 }
+.submits {
+  margin: auto;
+}
 @media (max-width: 740px) {
   .snav {
     overflow-x: auto;

@@ -7,7 +7,7 @@ import "./styles.css";
 import { Link } from "react-router-dom";
 
 const CatagoryPg = () => {
-  const api = "http://localhost:8000/ip/cat/allcat";
+  const api = "https://gebeyachn-server-apiendpoint.onrender.com/ip/cat/allcat";
   const { data } = Usefetch(api);
   const catagory = data.cats;
   return (

@@ -12,7 +12,7 @@ function User() {
   const { user } = UseAuthContext();
   const id = user.id;
 
-  const api = `http://localhost:8000/ip/item/useritems/${id}`;
+  const api = `https://gebeyachn-server-apiendpoint.onrender.com/ip/item/useritems/${id}`;
   const { data } = Usefetch(api);
   const all_items = data.cat_one;
 
