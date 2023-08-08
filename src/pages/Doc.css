@@ -1,7 +1,7 @@
 .documentation {
   margin: 2px;
   padding: 0;
-  font-family: "Poppins", sans-serif;
+  font-family: 'Poppins', sans-serif;
   box-sizing: border-box;
 }
 
@@ -52,8 +52,8 @@
   .mern {
     flex-direction: column;
   }
-  p {
-  }
+  /* p {
+  } */
 
   .mern .txt {
     width: 400px;
