@@ -1,0 +1,44 @@
+.catagorys h2 {
+  margin-bottom: 3rem;
+  color: #ff5a00;
+}
+.cats a:hover {
+  color: #ff5a00;
+  cursor: pointer;
+}
+.card_cat {
+  position: relative;
+  box-sizing: border-box;
+  border: solid 1px #ff59004b;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+.card_cat:hover {
+  color: white;
+  background-color: #ff5a00;
+  transition: 0.4s;
+}
+.card_cat .discription {
+  display: flex;
+  flex-direction: column;
+}
+.discription h {
+  padding-bottom: 0.5rem;
+}
+.discription p {
+  font-size: 12px;
+}
+.catagorys .cats .card {
+  margin-bottom: 1rem;
+}
+.card_cat .cat_imgs {
+  width: 100px;
+  border-radius: 7px;
+  margin-right: 10px;
+}
+.catagorys .spinner-border {
+  margin: 2rem 50%;
+  font-size: 30px;
+}

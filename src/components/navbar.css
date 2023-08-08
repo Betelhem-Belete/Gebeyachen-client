@@ -1,0 +1,235 @@
+@import url("https://fonts.googleapis.com/css2?family=Borel&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Bitter:ital@1&display=swap");
+
+.navbar {
+  /* position: sticky;
+  top: 0; */
+  background-color: #ff5a00;
+  padding: 0;
+}
+.btns .profil_img {
+  width: 15px;
+}
+.navbar .navbar-brand {
+  color: white;
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin: 0 1rem;
+  font-family: "Borel", cursive;
+}
+form {
+  position: relative;
+}
+.fa-cart-shopping {
+  font-size: 24px;
+  padding: 5px;
+}
+.navbar .form-control {
+  max-width: 600px;
+  margin-right: 1rem;
+  margin-left: 1rem;
+}
+.bar {
+  display: none;
+}
+.fa-bars {
+  font-size: 34px;
+  color: white;
+  padding-right: 1rem;
+}
+button #savechng {
+  background-color: #ff5a00;
+  color: white;
+}
+.search1 {
+  position: relative;
+  display: block;
+}
+
+.search1 .fa-magnifying-glass {
+  position: absolute;
+  top: -8;
+  right: 5;
+}
+.search1 input {
+  border: solid 1px #ff5a00;
+  width: 90% !important;
+}
+.btns1 {
+  display: block;
+}
+.btns1 button {
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+  color: white;
+  background-color: #ff5a00;
+  border-radius: 6px;
+  width: 91%;
+  margin-top: 1rem;
+  padding: 0.5rem 2rem;
+  font-size: 20px;
+}
+
+.btns1 button:hover {
+  background-color: #f57c51;
+  color: white;
+  transition: 0.4s;
+}
+h3 .navbar-brand1 {
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+  color: #ff5a00;
+  font-weight: 600;
+  text-decoration: none;
+}
+/* for the second nave */
+
+.snav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 2px 2px 1px rgb(235, 232, 232);
+}
+@media (max-width: 740px) {
+  .snav {
+    overflow-x: auto;
+  }
+}
+#icon_and_sell {
+  display: flex;
+}
+#icon_and_sell button a {
+  display: block;
+  padding: 0.5rem 1rem;
+}
+.snav ul {
+  display: flex;
+  list-style: none;
+  margin: 0;
+}
+.snav ul li {
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+  font-weight: 300;
+
+  color: rgb(110, 110, 110);
+  cursor: pointer;
+}
+.snav ul li a {
+  padding: 0.5rem;
+}
+.snav ul li:hover {
+  border-bottom: solid 1px #f57c51;
+  transition: 0.2s;
+  color: #f57c51;
+}
+.snav ul li a:hover {
+  color: #f57c51;
+}
+.snav button {
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+  font-weight: 700;
+  color: white;
+  background-color: #ff5a00;
+  border-radius: 6px;
+  margin: 9px 1rem 9px 0;
+}
+.snav button:hover {
+  background-color: #f57c51;
+}
+.snav button a:hover {
+  color: white;
+}
+.fa-location-dot {
+  margin-right: 10px;
+}
+.pop_list {
+  list-style: none;
+  margin-right: 1rem;
+}
+.pop_list li {
+  cursor: pointer;
+  display: block;
+  margin-bottom: 0.5rem;
+  font-family: "Bitter", serif;
+  font-weight: 900;
+  color: rgb(99, 98, 98);
+  box-shadow: 2px 2px 1px #f57d5141;
+  border-radius: 7px;
+  padding: 0.5rem;
+}
+.pop_list li:hover {
+  color: white;
+
+  background-color: #ff5a00;
+  transition: 0.2s;
+}
+.pop_list li a {
+  display: block;
+}
+.pop_list li a:hover {
+  color: white;
+}
+.pop_list li .fa-solid {
+  margin-right: 2rem;
+}
+.fa-lock {
+  margin-right: 0.5rem;
+}
+.btn {
+  margin-right: 0.5rem;
+  color: gray;
+}
+.search_results {
+  display: block;
+
+  margin-top: 1rem;
+  margin-left: 1rem;
+  width: 90%;
+}
+.search_result:hover {
+  background-color: #f57c51;
+  color: white;
+}
+#onbar_profile_img {
+  cursor: pointer;
+  display: flex;
+  width: 90%;
+  justify-content: center;
+  margin: 0 0 1rem 1rem;
+  padding-top: 5px;
+  border-radius: 7px;
+
+  background-color: #ff5a00;
+}
+#profile_pic_nave img {
+  min-width: 50px;
+  border-radius: 50%;
+  margin: 3px;
+}
+.search_result {
+  box-shadow: 2px 3px 8px goldenrod;
+  border-radius: 7px;
+  display: flex;
+  margin-bottom: 1rem;
+}
+.search_result .search_title {
+  padding-left: 1rem;
+  display: flex;
+  flex-direction: column;
+}
+.search_img {
+  border-radius: 7px;
+  max-width: 50px;
+}
+@media (max-width: 740px) {
+  .bar {
+    display: block;
+  }
+  .search {
+    display: none;
+  }
+  .s {
+    display: none;
+  }
+  .navbar .btns {
+    display: none;
+  }
+}

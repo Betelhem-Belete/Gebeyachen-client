@@ -1,0 +1,90 @@
+.main_service {
+  color: rgb(0, 0, 0);
+  text-decoration: none;
+  position: relative;
+  margin: 0px;
+  padding: 0px;
+  font-family: "Poppins", "sans-serif";
+}
+.service-title {
+  text-align: center;
+  margin-bottom: 5rem;
+}
+.slogan2 h1 {
+  color: rgb(131, 123, 123);
+  font-weight: bold;
+  font-size: 20px;
+  margin: auto;
+  text-align: center;
+  padding: 0px;
+}
+
+.header {
+  font-weight: bold;
+}
+
+h1 .service-title {
+  text-align: center;
+  display: inline-block;
+  height: 10%;
+  width: auto;
+}
+
+.service_img {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  width: 500px;
+  margin: 0px;
+  padding: 0px;
+  top: 0;
+  /* object-fit: cover;
+  object-position: right; */
+  /* height: 300px; */
+}
+
+.serv {
+  margin-bottom: 2rem;
+  font-size: 20px;
+  display: inline-block;
+  height: 30%;
+  width: 45%;
+  color: rgb(0, 0, 0);
+  padding-right: 1%;
+  margin-left: 2%;
+}
+
+hr {
+  color: rgb(195, 185, 185);
+}
+
+.label,
+.service-1 .fa-solid,
+.service-2 .fa-solid,
+.service-3 .fa-solid,
+.service-4 .fa-solid,
+.service-5 .fa-brands,
+.service-6 .fa-solid,
+.service-7 .fa-solid {
+  padding-left: 8px;
+
+  color: #ff5a00;
+}
+
+@media screen and (max-width: 768px) {
+  main {
+    margin: 0px;
+    padding: 1%;
+  }
+  .slogan2 {
+    font-size: medium;
+    font-weight: bold;
+    width: 100%;
+  }
+  .serv {
+    display: block;
+    margin-bottom: 2rem;
+    width: 100%;
+  }
+}
