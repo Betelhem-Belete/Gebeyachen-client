@@ -14,32 +14,58 @@
   display: flex;
   justify-content: space-evenly;
   align-items: center;
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f5f5f5;
 }
 
 .contents .img img {
   width: 300px;
   margin: 30px 0;
+.about_pg .col-md-12 p {
+  margin-bottom: 2rem;
 }
 
 .contents .para {
+.about_pg .col-md-12 h1 {
+  margin-top: 4rem;
   color: #ff5a00;
   width: 700px;
   line-height: 28px;
   letter-spacing: 2px;
   /* margin: 16px; */
+  margin-bottom: 1rem;
 }
 
 .boundary {
   height: 200px;
   border: 1px solid #8a8a8a;
+.person-card {
+  margin: 20px;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  background-color: #fff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 .head {
   text-align: center;
   margin: 16px;
+.person-image {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin: 0 auto 15px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+.person-title {
+  font-size: 24px;
   font-weight: bold;
   font-size: 33px;
   /* color: */
+  margin-bottom: 5px;
 }
 
 .dev {
@@ -47,16 +73,26 @@
   align-items: center;
   justify-content: space-evenly;
   height: auto;
+.person-position {
+  color: #777;
+  margin-bottom: 15px;
 }
 
 .dev img {
   margin: 30px 0;
   width: 400px;
   clip-path: circle();
+.person-description {
+  color: #555;
+  line-height: 1.5;
 }
 
 .dev .txt {
   width: 550px;
+.skills-list {
+  list-style: none;
+  padding: 0;
+  margin: 10px 0;
 }
 
 .dev .txt h1 {
@@ -65,6 +101,11 @@
   margin-bottom: 10px;
   font-weight: 100;
   color: #ff5a00;
+.skills-list li {
+  display: inline-block;
+  margin-right: 10px;
+  font-size: 14px;
+  color: #555;
 }
 
 .dev .txt h3 {
@@ -72,6 +113,12 @@
   font-style: poppins;
   margin-bottom: 10px;
   color: #838282;
+/* Introduction Section */
+.intro-section {
+  text-align: center;
+  margin-bottom: 30px;
+  padding: 50px 0;
+  background-color: #f8f8f8;
 }
 
 .dev .txt p {
@@ -79,6 +126,9 @@
   line-height: 20px;
   letter-spacing: 2px;
   font-style: poppins;
+.intro-section h1 {
+  font-size: 36px;
+  color: #333;
 }
 
 @media (max-width: 800px) {
@@ -102,4 +152,7 @@
     width: 400px;
     text-align: center;
   }
+.intro-section p {
+  font-size: 18px;
+  color: #777;
 }
