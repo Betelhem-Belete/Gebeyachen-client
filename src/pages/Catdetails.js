@@ -1,18 +1,18 @@
-import React from "react";
-import Navbar from "../components/navbar";
-import Footer from "../components/footer";
-import "./styles.css";
-import "../components/Items.css";
+import React from 'react';
+import Navbar from '../components/navbar';
+import Footer from '../components/footer';
+import './styles.css';
+import '../components/Items.css';
 
-import Catagory from "../components/Catagory";
-import { Link, useParams } from "react-router-dom";
-import Usefetch from "../hooks/useGet";
+import Catagory from '../components/Catagory';
+import { Link, useParams } from 'react-router-dom';
+import Usefetch from '../hooks/useGet';
 
 function Cat_details() {
   const _id = useParams();
   const id = _id.id;
   console.log(id);
-  const api = `http://localhost:8000/ip/item/catitems/${id}`;
+  const api = `https://gebeyastore.onrender.com/ip/item/catitems/${id}`;
   const { data } = Usefetch(api);
   const all_items = data.cat_one;
   return (

@@ -1,18 +1,18 @@
-import React from "react";
-import Navbar from "../components/navbar";
-import Footer from "../components/footer";
-import "./styles.css";
-import "../components/Items.css";
-import { UseLogout } from "../hooks/useLogout";
-import { Link, useNavigate } from "react-router-dom";
-import { Avatar, Wrap, WrapItem } from "@chakra-ui/react";
-import Usefetch from "../hooks/useGet";
-import { UseAuthContext } from "../hooks/useAuthContext";
+import React from 'react';
+import Navbar from '../components/navbar';
+import Footer from '../components/footer';
+import './styles.css';
+import '../components/Items.css';
+import { UseLogout } from '../hooks/useLogout';
+import { Link, useNavigate } from 'react-router-dom';
+import { Avatar, Wrap, WrapItem } from '@chakra-ui/react';
+import Usefetch from '../hooks/useGet';
+import { UseAuthContext } from '../hooks/useAuthContext';
 function User() {
   const { user } = UseAuthContext();
   const id = user.id;
 
-  const api = `http://localhost:8000/ip/item/useritems/${id}`;
+  const api = `https://gebeyastore.onrender.com/ip/item/useritems/${id}`;
   const { data } = Usefetch(api);
   const all_items = data.cat_one;
 
@@ -20,7 +20,7 @@ function User() {
   const history = useNavigate();
   const handl_logout = () => {
     logout();
-    history("/");
+    history('/');
   };
 
   return (

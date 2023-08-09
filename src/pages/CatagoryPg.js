@@ -1,13 +1,13 @@
-import React from "react";
-import Navbar from "../components/navbar";
-import Footer from "../components/footer";
-import Usefetch from "../hooks/useGet";
+import React from 'react';
+import Navbar from '../components/navbar';
+import Footer from '../components/footer';
+import Usefetch from '../hooks/useGet';
 
-import "./styles.css";
-import { Link } from "react-router-dom";
+import './styles.css';
+import { Link } from 'react-router-dom';
 
 const CatagoryPg = () => {
-  const api = "http://localhost:8000/ip/cat/allcat";
+  const api = 'https://gebeyastore.onrender.com/ip/cat/allcat';
   const { data } = Usefetch(api);
   const catagory = data.cats;
   return (

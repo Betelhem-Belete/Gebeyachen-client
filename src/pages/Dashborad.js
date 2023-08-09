@@ -1,34 +1,34 @@
-import React, { useState } from "react";
-import Navbar from "../components/navbar";
-import Footer from "../components/footer";
-import "./styles.css";
-import "../pages/login.css";
-import { useToast } from "@chakra-ui/react";
-import { UseAuthContext } from "../hooks/useAuthContext";
-import { useNavigate } from "react-router-dom";
+import React, { useState } from 'react';
+import Navbar from '../components/navbar';
+import Footer from '../components/footer';
+import './styles.css';
+import '../pages/login.css';
+import { useToast } from '@chakra-ui/react';
+import { UseAuthContext } from '../hooks/useAuthContext';
+import { useNavigate } from 'react-router-dom';
 
 function Dashborad() {
   const Toast = useToast();
   const { user } = UseAuthContext();
   const navigate = useNavigate();
   if (!user.isAdmin) {
-    navigate("/");
+    navigate('/');
   }
-  const [catagory_Name, setcatagory_Name] = useState("");
-  const [cat_description, setcat_description] = useState("");
+  const [catagory_Name, setcatagory_Name] = useState('');
+  const [cat_description, setcat_description] = useState('');
   const [pic, setPic] = useState(null);
   const [PicLoading, setPicLoading] = useState(false);
   ////////////////////
   const handle_uploade = (pic) => {
-    const uploade = "https://api.cloudinary.com/v1_1/yeabtsega/image/upload";
+    const uploade = 'https://api.cloudinary.com/v1_1/yeabtsega/image/upload';
     setPicLoading(true);
-    if (pic.type === "image/jpeg" || pic.type === "image/png") {
+    if (pic.type === 'image/jpeg' || pic.type === 'image/png') {
       const data = new FormData();
-      data.append("file", pic);
-      data.append("upload_preset", "chat_app");
-      data.append("cloud_name", "yeabtsega");
+      data.append('file', pic);
+      data.append('upload_preset', 'chat_app');
+      data.append('cloud_name', 'yeabtsega');
       fetch(uploade, {
-        method: "post",
+        method: 'post',
         body: data,
       })
         .then((res) => res.json())
@@ -40,21 +40,21 @@ function Dashborad() {
         .catch((err) => {
           Toast({
             title: err.message,
-            status: "error",
+            status: 'error',
             duration: 5000,
             isClosable: true,
-            position: "bottom",
+            position: 'bottom',
           });
           console.log(err);
           setPicLoading(false);
         });
     } else {
       Toast({
-        title: "image type is not supported",
-        status: "warning",
+        title: 'image type is not supported',
+        status: 'warning',
         duration: 5000,
         isClosable: true,
-        position: "bottom",
+        position: 'bottom',
       });
       return setPicLoading(false);
     }
@@ -66,51 +66,54 @@ function Dashborad() {
     console.log(catagory_Name, cat_description, cat_pic);
     if (!catagory_Name || !cat_description || !cat_pic) {
       Toast({
-        title: "fill all the space",
-        status: "error",
+        title: 'fill all the space',
+        status: 'error',
         duration: 5000,
         isClosable: true,
-        position: "bottom",
+        position: 'bottom',
       });
     }
     try {
-      const response = await fetch("http://localhost:8000/ip/cat/newcat", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          catagory_Name,
-          cat_description,
-          cat_pic,
-        }),
-      });
+      const response = await fetch(
+        'https://gebeyastore.onrender.com/ip/cat/newcat',
+        {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            catagory_Name,
+            cat_description,
+            cat_pic,
+          }),
+        }
+      );
 
       if (!response.ok) {
         Toast({
           title: response.message,
-          status: "error",
+          status: 'error',
           duration: 5000,
           isClosable: true,
-          position: "bottom",
+          position: 'bottom',
         });
       }
       if (response.ok) {
         Toast({
-          title: "category is Added",
-          status: "success",
+          title: 'category is Added',
+          status: 'success',
           duration: 5000,
           isClosable: true,
-          position: "bottom",
+          position: 'bottom',
         });
       }
     } catch (error) {
       Toast({
         title: error.message,
-        status: "error",
+        status: 'error',
         duration: 5000,
         isClosable: true,
-        position: "bottom",
+        position: 'bottom',
       });
     }
   };
@@ -120,7 +123,7 @@ function Dashborad() {
       <div className="container content">
         <div className="Dash_middle">
           <div className="mid_box">
-            {" "}
+            {' '}
             <form class="form" onSubmit={handle_submit}>
               <p class="title">Add Category </p>
               <p class="message">As an Admin you have full access </p>
