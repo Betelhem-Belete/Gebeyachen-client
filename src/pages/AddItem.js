@@ -1,28 +1,28 @@
-import React from "react";
-import Footer from "../components/footer";
-import Navbar from "../components/navbar";
-import { useToast } from "@chakra-ui/react";
-import { useState } from "react";
-import { UseAuthContext } from "../hooks/useAuthContext";
-import Usefetch from "../hooks/useGet";
-import "./styles.css";
-import { Link } from "react-router-dom";
+import React from 'react';
+import Footer from '../components/footer';
+import Navbar from '../components/navbar';
+import { useToast } from '@chakra-ui/react';
+import { useState } from 'react';
+import { UseAuthContext } from '../hooks/useAuthContext';
+import Usefetch from '../hooks/useGet';
+import './styles.css';
+import { Link } from 'react-router-dom';
 // import Catagory from "../components/Catagory";
 
 const AddItem = () => {
-  const api = "http://localhost:8000/ip/cat/allcat";
+  const api = 'https://gebeyastore.onrender.com/ip/cat/allcat';
   const { data } = Usefetch(api);
   const Category = data.cats;
 
   const Toast = useToast();
   const { user } = UseAuthContext();
   const [Item_Images, seItem_Images] = useState(null);
-  const [Item_Name, setItem_Name] = useState("");
-  const [Item_Description, setItem_Description] = useState("");
-  const [Item_Brand, setItem_Brand] = useState("");
-  const [Item_Category, setItem_Category] = useState("");
-  const [Item_Price, setItem_Price] = useState("");
-  const [Item_poster, setItem_poster] = useState("");
+  const [Item_Name, setItem_Name] = useState('');
+  const [Item_Description, setItem_Description] = useState('');
+  const [Item_Brand, setItem_Brand] = useState('');
+  const [Item_Category, setItem_Category] = useState('');
+  const [Item_Price, setItem_Price] = useState('');
+  const [Item_poster, setItem_poster] = useState('');
   const [isLoading, setIsLoading] = useState(null);
   const [PicLoading, setPicLoading] = useState(false);
   const token = user.token;
@@ -47,79 +47,82 @@ const AddItem = () => {
       !Item_Brand ||
       !Item_Price ||
       !Item_Images ||
-      !Item_Category ||
-      !Item_poster
+      !Item_Category
+      // !Item_poster
     ) {
       Toast({
-        title: "fill all the space",
-        status: "error",
+        title: 'fill all the space',
+        status: 'error',
         duration: 5000,
         isClosable: true,
-        position: "bottom",
+        position: 'bottom',
       });
       setIsLoading(false);
     }
     try {
-      const response = await fetch("http://localhost:8000/ip/item/newitems", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          authorization: `beared ${token}`,
-        },
-        body: JSON.stringify({
-          Item_Name,
-          Item_Description,
-          Item_Brand,
-          Item_Price,
-          Item_Images,
-          Item_Category,
-          Item_poster,
-        }),
-      });
+      const response = await fetch(
+        'https://gebeyastore.onrender.com/ip/item/newitems',
+        {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            authorization: `beared ${token}`,
+          },
+          body: JSON.stringify({
+            Item_Name,
+            Item_Description,
+            Item_Brand,
+            Item_Price,
+            Item_Images,
+            Item_Category,
+            Item_poster,
+          }),
+        }
+      );
 
       if (!response.ok) {
         setIsLoading(false);
         Toast({
-          title: "Post ADS in failed",
-          status: "error",
+          title: 'Post ADS in failed',
+          status: 'error',
           duration: 5000,
           isClosable: true,
-          position: "bottom",
+          position: 'bottom',
         });
         setIsLoading(false);
       }
       if (response.ok) {
         setIsLoading(false);
         Toast({
-          title: "Post is Added",
-          status: "success",
+          title: 'Post is Added',
+          status: 'success',
           duration: 5000,
           isClosable: true,
-          position: "bottom",
+          position: 'bottom',
         });
         setIsLoading(false);
       }
     } catch (error) {
       Toast({
         title: error.message,
-        status: "error",
+        status: 'error',
         duration: 5000,
         isClosable: true,
-        position: "bottom",
+        position: 'bottom',
       });
       setIsLoading(false);
     }
   };
   const handle_uploade = (pic) => {
-    const uploade = "https://api.cloudinary.com/v1_1/yeabtsega/image/upload";
+    const uploade = 'https://api.cloudinary.com/v1_1/yeabtsega/image/upload';
     setPicLoading(true);
-    if (pic.type === "image/jpeg" || pic.type === "image/png") {
+    if (pic.type === 'image/jpeg' || pic.type === 'image/png') {
       const data = new FormData();
-      data.append("file", pic);
-      data.append("upload_preset", "chat_app");
-      data.append("cloud_name", "yeabtsega");
+      data.append('file', pic);
+      data.append('upload_preset', 'chat_app');
+      data.append('cloud_name', 'yeabtsega');
       fetch(uploade, {
-        method: "post",
+        method: 'post',
         body: data,
       })
         .then((res) => res.json())
@@ -131,21 +134,21 @@ const AddItem = () => {
         .catch((err) => {
           Toast({
             title: err.message,
-            status: "error",
+            status: 'error',
             duration: 5000,
             isClosable: true,
-            position: "bottom",
+            position: 'bottom',
           });
           console.log(err);
           setPicLoading(false);
         });
     } else {
       Toast({
-        title: "image type is not supported",
-        status: "warning",
+        title: 'image type is not supported',
+        status: 'warning',
         duration: 5000,
         isClosable: true,
-        position: "bottom",
+        position: 'bottom',
       });
       return setPicLoading(false);
     }

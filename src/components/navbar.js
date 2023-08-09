@@ -1,18 +1,18 @@
-import React, { useState } from "react";
-import "./navbar.css";
-import { Link } from "react-router-dom";
-import { UseAuthContext } from "../hooks/useAuthContext";
-import { UseLogout } from "../hooks/useLogout";
-import { Avatar, Wrap, WrapItem } from "@chakra-ui/react";
-import { useToast } from "@chakra-ui/react";
-import axios from "axios";
+import React, { useState } from 'react';
+import './navbar.css';
+import { Link } from 'react-router-dom';
+import { UseAuthContext } from '../hooks/useAuthContext';
+import { UseLogout } from '../hooks/useLogout';
+import { Avatar, Wrap, WrapItem } from '@chakra-ui/react';
+import { useToast } from '@chakra-ui/react';
+import axios from 'axios';
 const Navbar = () => {
   const { user } = UseAuthContext();
   const [search, setSearch] = useState();
   const [Loading, setLoading] = useState(false);
   const [searchResult, setSearchResult] = useState([]);
   const Toast = useToast();
-  console.log("search", searchResult);
+  console.log('search', searchResult);
   const handle_Search = async (query) => {
     setSearch(query);
     if (!query) {
@@ -23,7 +23,7 @@ const Navbar = () => {
       setLoading(true);
 
       const { data } = await axios.get(
-        `http://localhost:8000/ip/item?search=${search}`
+        `https://gebeyastore.onrender.com/ip/item?search=${search}`
       );
       const tati = data.Item;
       console.log(tati);
@@ -31,12 +31,12 @@ const Navbar = () => {
       setSearchResult(tati);
     } catch (error) {
       Toast({
-        title: "Error Occured!",
-        description: "Failed to Load the Search Results",
-        status: "error",
+        title: 'Error Occured!',
+        description: 'Failed to Load the Search Results',
+        status: 'error',
         duration: 5000,
         isClosable: true,
-        position: "bottom-left",
+        position: 'bottom-left',
       });
     }
   };
@@ -61,7 +61,7 @@ const Navbar = () => {
               type="search"
               placeholder="Search items"
               aria-label="Search"
-              style={{ width: "400px" }}
+              style={{ width: '400px' }}
             />
           </form>
           <div
@@ -90,7 +90,7 @@ const Navbar = () => {
                     type="search"
                     placeholder="Search"
                     aria-label="Search"
-                    style={{ width: "450px" }}
+                    style={{ width: '450px' }}
                     onChange={(e) => {
                       handle_Search(e.target.value);
                     }}
@@ -113,7 +113,7 @@ const Navbar = () => {
                               className="search_img"
                               src={it.Item_Images}
                               alt={it.Item_Brand}
-                              style={{ width: "100%" }}
+                              style={{ width: '100%' }}
                             />
                             <div className="search_title">
                               <h5>{it.Item_Brand}</h5>
@@ -193,7 +193,7 @@ const Navbar = () => {
                   data-bs-target="#exampleModal"
                   placeholder="Search"
                   aria-label="Search"
-                  style={{ width: "400px" }}
+                  style={{ width: '400px' }}
                 />
 
                 <div
@@ -222,7 +222,7 @@ const Navbar = () => {
                           type="search"
                           placeholder="Search"
                           aria-label="Search"
-                          style={{ width: "450px" }}
+                          style={{ width: '450px' }}
                           onChange={(e) => {
                             handle_Search(e.target.value);
                           }}
@@ -245,7 +245,7 @@ const Navbar = () => {
                                     className="search_img"
                                     src={it.Item_Images}
                                     alt={it.Item_Brand}
-                                    style={{ width: "100%" }}
+                                    style={{ width: '100%' }}
                                   />
                                   <div className="search_title">
                                     <h5>{it.Item_Brand}</h5>
@@ -290,7 +290,7 @@ const Navbar = () => {
               <ul className="pop_list">
                 <li>
                   <Link to="/">
-                    <i className="fa-solid fa-house"></i>Home{" "}
+                    <i className="fa-solid fa-house"></i>Home{' '}
                   </Link>
                 </li>
                 <li>
