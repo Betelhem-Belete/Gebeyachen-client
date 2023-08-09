@@ -10,7 +10,7 @@ function About() {
   return (
     <div>
       <Navbar />
-      <div className="content">about</div>
+      {/* <div className="content">about</div> */}
       <div className="tt">
         <div class="container about_pg">
           <div class="row coverfor_about">
