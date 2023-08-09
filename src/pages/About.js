@@ -1,11 +1,11 @@
-import React from "react";
-import Footer from "../components/footer";
-import Navbar from "../components/navbar";
-import yab from "../assets/yab.jpg";
-import beti from "../assets/beti.jpg";
+import React from 'react';
+import Footer from '../components/footer';
+import Navbar from '../components/navbar';
+import yab from '../assets/yab.jpg';
+import beti from '../assets/beti.jpg';
 // import about from "../assets/about.png";
-import "./styles.css";
-import "./About.css";
+import './styles.css';
+import './About.css';
 function About() {
   return (
     <div>
@@ -75,3 +75,6 @@ function About() {
 
       <Footer />
     </div>
+  );
+}
+export default About;
