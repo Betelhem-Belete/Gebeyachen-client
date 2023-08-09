@@ -24,7 +24,6 @@ const CatagoryPg = () => {
                   <div class="card">
                     <img
                       src={cats.cat_pic}
-                      class="card-img-top"
                       alt={cats.Catagory_Name}
                       className="cat_imgs"
                     />

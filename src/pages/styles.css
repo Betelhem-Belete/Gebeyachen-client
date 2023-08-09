@@ -97,7 +97,7 @@ body {
   font-size: 30px;
 }
 .item_d_grid .item_img_coll {
-  max-width: 660px;
+  width: 100%;
 }
 .item_d_grid .item_img_coll h5 {
   font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
@@ -328,6 +328,9 @@ body {
 @media (max-width: 500px) {
   .user_grid {
     grid-template-columns: auto;
+  }
+  .item_d_grid .item_img_coll .card {
+    width: 100% !important;
   }
 }
 @media (max-width: 800px) {

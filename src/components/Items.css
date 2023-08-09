@@ -46,15 +46,12 @@
   aspect-ratio: 3/2;
   object-fit: cover;
 }
-@media (max-width: 425px) {
+@media (max-width: 431px) {
   .items {
     width: 100%;
   }
   .items .card {
     max-width: 21rem;
-  }
-  .card {
-    max-width: 18rem;
   }
 }
 @media (max-width: 629px) and (min-width: 521px) {

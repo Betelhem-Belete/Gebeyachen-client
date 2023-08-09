@@ -198,7 +198,7 @@ const Navbar = () => {
                   className="form-control d-flex flex-grow-1"
                   type="search"
                   data-bs-toggle="modal"
-                  data-bs-target="#exampleModal"
+                  data-bs-target="#exampleModal1"
                   placeholder="Search"
                   aria-label="Search"
                   style={{ width: "400px" }}
@@ -206,7 +206,7 @@ const Navbar = () => {
 
                 <div
                   class="modal fade"
-                  id="exampleModal"
+                  id="exampleModal1"
                   tabindex="-1"
                   aria-labelledby="exampleModalLabel"
                   aria-hidden="true"
@@ -238,8 +238,8 @@ const Navbar = () => {
                         {searchResult && (
                           <div
                             className="search_results"
-                            data-bs-dismiss="modal"
-                            aria-label="Close"
+                            // data-bs-dismiss="modal"
+                            // aria-label="Close"
                           >
                             {searchResult.map((it) => (
                               <Link to={`/itemdetail/${it._id}`}>

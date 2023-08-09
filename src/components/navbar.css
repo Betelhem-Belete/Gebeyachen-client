@@ -154,7 +154,7 @@ h3 .navbar-brand1 {
   font-family: "Bitter", serif;
   font-weight: 900;
   color: rgb(99, 98, 98);
-  box-shadow: 2px 2px 1px #f57d5141;
+  box-shadow: 2px 2px 1px #eec5b641;
   border-radius: 7px;
   padding: 0.5rem;
 }
@@ -166,6 +166,7 @@ h3 .navbar-brand1 {
 }
 .pop_list li a {
   display: block;
+  padding: 0.5rem 0;
 }
 .pop_list li a:hover {
   color: white;

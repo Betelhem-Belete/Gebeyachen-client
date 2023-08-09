@@ -3,22 +3,33 @@
   color: #ff5a00;
 }
 .cats a:hover {
+  transition: 0.4s;
+
   color: #ff5a00;
   cursor: pointer;
 }
-.card_cat {
+/* .card_cat {
   position: relative;
   box-sizing: border-box;
-  border: solid 1px #ff59004b;
   border-radius: 8px;
   display: flex;
   align-items: center;
   margin-bottom: 1rem;
+} */
+.cats .card:hover {
+  box-shadow: rgba(0, 0, 0, 0.09) 0px 2px 1px, rgba(0, 0, 0, 0.09) 0px 4px 2px,
+    rgba(0, 0, 0, 0.09) 0px 8px 4px, rgba(0, 0, 0, 0.09) 0px 16px 8px,
+    rgba(0, 0, 0, 0.09) 0px 32px 16px;
+}
+.cats .card {
+  border: solid 1px #ff59004b;
+  border-radius: 7px;
+  box-shadow: rgba(136, 165, 191, 0.48) 6px 2px 16px 0px,
+    rgba(255, 255, 255, 0.8) -6px -2px 16px 0px;
 }
 .card_cat:hover {
   color: white;
-  background-color: #ff5a00;
-  transition: 0.4s;
+  /* background-color: #ff5a00; */
 }
 .card_cat .discription {
   display: flex;
@@ -33,10 +44,13 @@
 .catagorys .cats .card {
   margin-bottom: 1rem;
 }
-.card_cat .cat_imgs {
-  width: 100px;
+.card .cat_imgs {
+  aspect-ratio: 3/2;
+  object-fit: cover;
+  width: 100%;
+
   border-radius: 7px;
-  margin-right: 10px;
+  /* margin-right: 10px; */
 }
 .catagorys .spinner-border {
   margin: 2rem 50%;
