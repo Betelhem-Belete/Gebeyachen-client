@@ -46,6 +46,12 @@
   aspect-ratio: 3/2;
   object-fit: cover;
 }
+.items .card-title {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 20ch; /* Adjust this value as needed */
+}
 @media (max-width: 431px) {
   .items {
     width: 100%;
