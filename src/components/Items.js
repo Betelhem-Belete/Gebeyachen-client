@@ -1,13 +1,13 @@
-import React from "react";
-import "./Items.css";
-import Usefetch from "../hooks/useGet";
-import { Link } from "react-router-dom";
+import React from 'react';
+import './Items.css';
+import Usefetch from '../hooks/useGet';
+import { Link } from 'react-router-dom';
 
 function Items() {
-  const api = "http://localhost:8000/ip/item/allitems";
+  const api = 'https://gebeyastore.onrender.com/ip/item/allitems';
   const { data } = Usefetch(api);
   const all_items = data.all_Items;
-  console.log("items", all_items);
+  console.log('items', all_items);
   return (
     <div className="items">
       {/* card starts */}
@@ -22,10 +22,10 @@ function Items() {
               />
               <div class="card-body">
                 <h6 class="card-title">{items.Item_Name}</h6>
-                <i class="fa-solid fa-star" style={{ color: "#fad000" }}></i>
-                <i class="fa-solid fa-star" style={{ color: "#fad000" }}></i>
-                <i class="fa-solid fa-star" style={{ color: "#fad000" }}></i>
-                <i class="fa-solid fa-star" style={{ color: "#fad000" }}></i>
+                <i class="fa-solid fa-star" style={{ color: '#fad000' }}></i>
+                <i class="fa-solid fa-star" style={{ color: '#fad000' }}></i>
+                <i class="fa-solid fa-star" style={{ color: '#fad000' }}></i>
+                <i class="fa-solid fa-star" style={{ color: '#fad000' }}></i>
                 <i class="fa-regular fa-star"></i>
                 <i class="fa-regular fa-star"></i>
                 <hr />
