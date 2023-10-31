@@ -34,8 +34,7 @@ function About() {
                   serving as the CEO and Developer of Gebeyachen. With a passion
                   for technology and innovation, Yabtsega has led the company to
                   new heights. Alongside these achievements, Yabtsega is also a
-                  Full Stack Developer and currently pursuing studies at Unity
-                  University.
+                  Full Stack Developer.
                 </p>
                 <ul class="skills-list">
                   <li>Web Development</li>
